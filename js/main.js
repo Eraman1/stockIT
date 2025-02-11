@@ -166,11 +166,11 @@
 
 // for read less and more
 
-function toggleText() {
-  var moreText = document.getElementById("moreText");
-  var button = document.getElementById("toggleButton");
+function toggleText(button) {
+  var targetId = button.getAttribute("data-target"); // Get target ID
+  var moreText = document.getElementById(targetId); // Target element
 
-  if (moreText.style.display === "none") {
+  if (moreText.style.display === "none" || moreText.style.display === "") {
     moreText.style.display = "block";
     button.innerHTML = "Read Less";
   } else {
