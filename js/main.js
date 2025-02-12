@@ -178,3 +178,46 @@ function toggleText(button) {
     button.innerHTML = "Read More";
   }
 }
+
+// features
+const featureCards = document.querySelectorAll(".feature-card");
+const featureTitle = document.getElementById("feature-title");
+const featureContent = document.getElementById("feature-content");
+
+const contentMap = {
+  "Send Estimate and Quotations":
+    "Using our free billing software, you can easily create useful documents. It includes quotations, estimates, and accurate invoices. Send them directly through WhatsApp, email, or print.",
+  "Track Orders":
+    "Track your orders seamlessly with real-time updates. Stay informed about your shipments and manage your deliveries efficiently.",
+  "Choose Themes":
+    "Personalize your experience by choosing from a variety of vibrant themes that suit your style and brand.",
+  "Record Expenses":
+    "Easily record and manage your business expenses to keep track of your financial health.",
+  "Receivables and Payables":
+    "Manage your receivables and payables efficiently to maintain a healthy cash flow.",
+  "Delivery Challan":
+    "Generate and manage delivery challans to ensure smooth order fulfillment and tracking.",
+  "Bank Accounts":
+    "Manage multiple bank accounts seamlessly, track transactions, and monitor balances with ease.",
+  "Business Reports":
+    "Generate detailed business reports to analyze performance, track growth, and make informed decisions.",
+  "GST Invoicing / Billing":
+    "Simplify your GST invoicing and billing processes with automated features for accurate tax calculations.",
+  "Automatic Data Backup":
+    "Ensure your data is safe with automatic backups, reducing the risk of data loss and enhancing security.",
+  "Regular / Thermal Printer":
+    "Compatible with regular and thermal printers for quick and easy invoice printing.",
+  "Online Store":
+    "Manage your online store effortlessly, track orders, update inventory, and process payments smoothly.",
+};
+
+featureCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    featureCards.forEach((c) => c.classList.remove("active"));
+    card.classList.add("active");
+
+    const title = card.querySelector("h5").textContent;
+    featureTitle.textContent = title;
+    featureContent.textContent = contentMap[title];
+  });
+});

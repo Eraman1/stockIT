@@ -10562,3 +10562,14 @@ h6,
 .faq-header:not(.collapsed) i {
   transform: rotate(-180deg); /* Rotate arrow when expanded */
 }
+
+/* features */
+.feature-card.active {
+  background-color: #e8f4ff;
+  /* border: 1px solid #007bff; */
+}
+
+.feature-card:hover {
+  background-color: #f1f9ff;
+  transition: background-color 0.3s;
+}
