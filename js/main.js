@@ -221,3 +221,13 @@ featureCards.forEach((card) => {
     featureContent.textContent = contentMap[title];
   });
 });
+
+document.querySelectorAll(".toggle-btn").forEach((button) => {
+  button.addEventListener("click", function () {
+    const content = this.previousElementSibling;
+    content.classList.toggle("d-none");
+    this.textContent = content.classList.contains("d-none")
+      ? "+ Read more"
+      : "- Read less";
+  });
+});
