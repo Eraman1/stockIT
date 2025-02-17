@@ -172,10 +172,10 @@ function toggleText(button) {
 
   if (moreText.style.display === "none" || moreText.style.display === "") {
     moreText.style.display = "block";
-    button.innerHTML = "Read Less";
+    button.innerHTML = "- Read Less";
   } else {
     moreText.style.display = "none";
-    button.innerHTML = "Read More";
+    button.innerHTML = "+ Read More";
   }
 }
 
@@ -185,8 +185,6 @@ const featureTitle = document.getElementById("feature-title");
 const featureContent = document.getElementById("feature-content");
 
 const contentMap = {
-  "Send Estimate and Quotations":
-    "Using our free billing software, you can easily create useful documents. It includes quotations, estimates, and accurate invoices. Send them directly through WhatsApp, email, or print.",
   "Track Orders":
     "Track your orders seamlessly with real-time updates. Stay informed about your shipments and manage your deliveries efficiently.",
   "Choose Themes":
