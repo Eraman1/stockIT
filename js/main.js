@@ -386,3 +386,21 @@ function generateFAQ() {
 }
 
 generateFAQ();
+
+
+
+function toggleBilling(option) {
+      var monthlyDiv = document.getElementById("monthly");
+      var yearlyDiv = document.getElementById("yearly");
+
+      if (option === "monthly") {
+        monthlyDiv.classList.remove("d-none");
+        yearlyDiv.classList.add("d-none");
+      } else if (option === "yearly") {
+        monthlyDiv.classList.add("d-none");
+        yearlyDiv.classList.remove("d-none");
+      } else if (option === "all") {
+        monthlyDiv.classList.remove("d-none");
+        yearlyDiv.classList.remove("d-none");
+      }
+    }
