@@ -10592,3 +10592,10 @@ h6,
   z-index: 1000;
   transition: 0.3s;
 }
+
+
+
+.pay-button {
+    font-size: 0.875rem; /* Adjust the size as needed */
+    padding: 0.25rem 0.5rem; /* Adjust the padding as needed */
+}

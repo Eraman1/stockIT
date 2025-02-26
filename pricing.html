@@ -119,115 +119,244 @@
   <!-- Page Header End -->
 
 
-  <div class="container my-5 ">
+  <div class=" my-5 ">
     <h1 class="text-dark text-center">Choose Your Plan</h1>
     <p class="text-center">💻 Web portal + 📱 Mobile App</p>
     <p class="text-center"><b>Buy Premium to unlock all feature !</b></p>
-
-    <div class="row d-flex flex-wrap justify-content-center gap-3 mt-5">
-      <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
-        <div class="card-body d-flex flex-column">
-          <h6 class="font-weight-bold text-uppercase">Basic Monthly <br> 📱</h6>
-          <p class="text-muted" style="text-decoration: line-through;">₹100</p>
-          <p id="basic-price" class="font-weight-bold text-primary h4">₹60 <span
-              class="h6 font-weight-normal">Only</span></p>
-          <hr>
-          <ul class="list-unstyled text-left small">
-            <li><i class="fas fa-check-circle text-secondary"></i> Access only Android App</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Access for 1 user</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
-            <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Daily report sent to your email</li>
-            <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Add Staff</li>
-          </ul>
-          <button class="btn btn-primary btn-sm mt-auto">Pay ₹71 <br> (Including GST)</button>
-        </div>
-      </div>
-
-      <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
-        <div class="bg-secondary text-white font-weight-bold py-1 rounded" style="margin-top: -1rem;">POPULAR PLAN</div>
-        <div class="card-body d-flex flex-column">
-          <h6 class="font-weight-bold text-uppercase">Pro Monthly <br> 📱</h6>
-          <p class="text-muted" style="text-decoration: line-through;">₹250</p>
-          <p id="pro-price" class="font-weight-bold text-primary h4">₹130 <span
-              class="h6 font-weight-normal">Only</span></p>
-          <hr>
-          <ul class="list-unstyled text-left small">
-            <li><i class="fas fa-check-circle text-secondary"></i> Access only Android App</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Daily report sent to your email</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Add 1 User + 3 staff</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Many more...</li>
-          </ul>
-          <div class="form-check text-center my-2">
-            <input class="form-check-input" type="checkbox" id="extraStaff">
-            <label class="form-check-label" for="extraStaff">
-              Add Extra Staff
-            </label>
+    <!-- Toggle for Monthly / Yearly -->
+    <!-- Toggle for Monthly / Yearly -->
+    <div class="text-center my-3">
+      <label class="mr-2">
+        <input type="radio" name="billingCycle" value="monthly" checked onclick="toggleBilling('monthly')"> Monthly
+      </label>
+      <label class="ml-3">
+        <input type="radio" name="billingCycle" value="yearly" onclick="toggleBilling('yearly')"> Yearly (Save 20%)
+      </label>
+      <label class="ml-3">
+        <input type="radio" name="billingCycle" value="all" onclick="toggleBilling('all')"> All
+      </label>
+    </div>
+    <div class="" id="monthly">
+      <div class="row d-flex flex-wrap justify-content-center gap-3 mt-5 ">
+        <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
+          <div class="card-body d-flex flex-column">
+            <h6 class="font-weight-bold text-uppercase"><span class="plan-type">Basic Monthly</span> <br> 📱</h6>
+            <p class="text-muted" style="text-decoration: line-through;">₹100</p>
+            <p id="basic-price" class="font-weight-bold text-primary h4">₹60 <span
+                class="h6 font-weight-normal">Only</span></p>
+            <hr>
+            <ul class="list-unstyled text-left">
+              <li><i class="fas fa-check-circle text-secondary"></i> Access only Android App</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Access for 1 user</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
+              <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Daily report sent to your email
+              </li>
+              <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Add Staff</li>
+            </ul>
+            <button class="btn btn-primary btn-sm mt-auto pay-button">Pay ₹71 <br> (Including GST)</button>
           </div>
-          <button class="btn btn-primary btn-sm mt-auto">Pay ₹153 <br> (Including GST)</button>
         </div>
-      </div>
 
-      <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
-        <div class="card-body d-flex flex-column">
-          <h6 class="font-weight-bold text-uppercase">Pro Plus Monthly <br> 💻 + 📱</h6>
-          <p class="text-muted" style="text-decoration: line-through;">₹160</p>
-          <p id="pro-web-price" class="font-weight-bold text-primary h4">₹140 <span
-              class="h6 font-weight-normal">Only</span></p>
-          <hr>
-          <ul class="list-unstyled text-left small">
-            <li><i class="fas fa-check-circle text-secondary"></i> Access for Web + Android App</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Access for 1 user</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
-            <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Daily report sent to your email</li>
-            <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Add staff</li>
-          </ul>
-          <button class="btn btn-primary btn-sm mt-auto">Pay ₹165 <br> (Including GST)</button>
-        </div>
-      </div>
-
-      <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
-        <div class="bg-secondary text-white font-weight-bold py-1 rounded" style="margin-top: -1rem;">POPULAR PLAN</div>
-        <div class="card-body d-flex flex-column">
-          <h6 class="font-weight-bold text-uppercase">Pro Monthly <br> 💻 + 📱 </h6>
-          <p class="text-muted" style="text-decoration: line-through;">₹323</p>
-          <p id="pro-price" class="font-weight-bold text-primary h4">₹240 <span
-              class="h6 font-weight-normal">Only</span></p>
-          <hr>
-          <ul class="list-unstyled text-left small">
-            <li><i class="fas fa-check-circle text-secondary"></i> Access only Android App</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Daily report sent to your email</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Add 1 User + 3 staff</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
-            <li><i class="fas fa-check-circle text-secondary"></i> Many more...</li>
-          </ul>
-          <div class="form-check text-center my-2">
-            <input class="form-check-input" type="checkbox" id="extraStaff">
-            <label class="form-check-label" for="extraStaff">
-              Add Extra Staff
-            </label>
+        <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
+          <div class="bg-secondary text-white font-weight-bold py-1 rounded" style="margin-top: -1rem;">POPULAR PLAN
           </div>
-          <button class="btn btn-primary btn-sm mt-auto">Pay ₹283 <br> (Including GST)</button>
+          <div class="card-body d-flex flex-column">
+            <h6 class="font-weight-bold text-uppercase">Pro Monthly <br> 📱</h6>
+            <p class="text-muted" style="text-decoration: line-through;">₹250</p>
+            <p id="pro-price" class="font-weight-bold text-primary h4">₹130 <span
+                class="h6 font-weight-normal">Only</span></p>
+            <hr>
+            <ul class="list-unstyled text-left ">
+              <li><i class="fas fa-check-circle text-secondary"></i> Access only Android App</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Daily report sent to your email</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add 1 User + 3 staff</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Many more...</li>
+            </ul>
+            <div class="form-check text-center my-2">
+              <input class="form-check-input" type="checkbox" id="extraStaff">
+              <label class="form-check-label" for="extraStaff">
+                Add Extra Staff
+              </label>
+            </div>
+            <button class="btn btn-primary btn-sm mt-auto pay-button">Pay ₹153 <br> (Including GST)</button>
+          </div>
+        </div>
+
+        <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
+          <div class="card-body d-flex flex-column">
+            <h6 class="font-weight-bold text-uppercase">Basic Plus Monthly <br> 💻 + 📱</h6>
+            <p class="text-muted" style="text-decoration: line-through;">₹160</p>
+            <p id="pro-web-price" class="font-weight-bold text-primary h4">₹140 <span
+                class="h6 font-weight-normal">Only</span></p>
+            <hr>
+            <ul class="list-unstyled text-left">
+              <li><i class="fas fa-check-circle text-secondary"></i> Access for Web + Android App</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Access for 1 user</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
+              <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Daily report sent to your email
+              </li>
+              <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Add staff</li>
+            </ul>
+            <button class="btn btn-primary btn-sm mt-auto pay-button">Pay ₹165 <br> (Including GST)</button>
+          </div>
+        </div>
+
+        <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
+          <div class="bg-secondary text-white font-weight-bold py-1 rounded" style="margin-top: -1rem;">POPULAR PLAN
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h6 class="font-weight-bold text-uppercase">Pro Plus Monthly <br> 💻 + 📱 </h6>
+            <p class="text-muted" style="text-decoration: line-through;">₹323</p>
+            <p id="pro-price" class="font-weight-bold text-primary h4">₹240 <span
+                class="h6 font-weight-normal">Only</span></p>
+            <hr>
+            <ul class="list-unstyled text-left">
+              <li><i class="fas fa-check-circle text-secondary"></i> Access only Android App</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Daily report sent to your email</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add 1 User + 3 staff</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Many more...</li>
+            </ul>
+            <div class="form-check text-center my-2">
+              <input class="form-check-input" type="checkbox" id="extraStaff">
+              <label class="form-check-label" for="extraStaff">
+                Add Extra Staff
+              </label>
+            </div>
+            <button class="btn btn-primary btn-sm mt-auto pay-button">Pay ₹283 <br> (Including GST)</button>
+          </div>
         </div>
       </div>
     </div>
+    <div class="d-none" id="yearly">
+      <div class="row d-flex flex-wrap justify-content-center gap-3 mt-5 ">
+        <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
+          <div class="card-body d-flex flex-column">
+            <h6 class="font-weight-bold text-uppercase"><span class="plan-type">Basic Yearly</span> <br> 📱</h6>
+            <p class="text-muted" style="text-decoration: line-through;">₹830</p>
+            <p id="basic-price" class="font-weight-bold text-primary h4">₹620<span
+                class="h6 font-weight-normal">Only</span>
+            </p>
+            <hr>
+            <ul class="list-unstyled text-left">
+              <li><i class="fas fa-check-circle text-secondary"></i> Access only Android App</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Access for 1 user</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
+              <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Daily report sent to your email
+              </li>
+              <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Add Staff</li>
+            </ul>
+            <button class="btn btn-primary btn-sm mt-auto pay-button">Pay ₹732 <br> (Including GST)</button>
+          </div>
+        </div>
 
+        <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
+          <div class="bg-secondary text-white font-weight-bold py-1 rounded" style="margin-top: -1rem;">POPULAR PLAN
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h6 class="font-weight-bold text-uppercase">Pro Yearly <br> 📱</h6>
+            <p class="text-muted" style="text-decoration: line-through;">₹1670</p>
+            <p id="pro-price" class="font-weight-bold text-primary h4">₹1260 <span
+                class="h6 font-weight-normal">Only</span>
+            </p>
+            <hr>
+            <ul class="list-unstyled text-left ">
+              <li><i class="fas fa-check-circle text-secondary"></i> Access only Android App</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Daily report sent to your email</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add 1 User + 3 staff</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Many more...</li>
+            </ul>
+            <div class="form-check text-center my-2">
+              <input class="form-check-input" type="checkbox" id="extraStaff">
+              <label class="form-check-label" for="extraStaff">
+                Add Extra Staff
+              </label>
+            </div>
+            <button class="btn btn-primary btn-sm mt-auto pay-button">Pay ₹1487 <br> (Including GST)</button>
+          </div>
+        </div>
+
+        <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
+          <div class="card-body d-flex flex-column">
+            <h6 class="font-weight-bold text-uppercase">Basic Plus Yearly <br> 💻 + 📱</h6>
+            <p class="text-muted" style="text-decoration: line-through;">₹1900</p>
+            <p id="pro-web-price" class="font-weight-bold text-primary h4">₹1400 <span
+                class="h6 font-weight-normal">Only</span></p>
+            <hr>
+            <ul class="list-unstyled text-left">
+              <li><i class="fas fa-check-circle text-secondary"></i> Access for Web + Android App</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Access for 1 user</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
+              <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Daily report sent to your email
+              </li>
+              <li class="text-muted"><i class="fas fa-times-circle text-danger"></i> Add staff</li>
+            </ul>
+            <button class="btn btn-primary btn-sm mt-auto pay-button">Pay ₹1652 <br> (Including GST)</button>
+          </div>
+        </div>
+
+        <div class="col-md-3 card shadow-lg border text-center" style="max-width: 300px;">
+          <div class="bg-secondary text-white font-weight-bold py-1 rounded" style="margin-top: -1rem;">POPULAR PLAN
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h6 class="font-weight-bold text-uppercase">Pro Plus Yearly <br> 💻 + 📱 </h6>
+            <p class="text-muted" style="text-decoration: line-through;">₹2900</p>
+            <p id="pro-price" class="font-weight-bold text-primary h4">₹2400 <span
+                class="h6 font-weight-normal">Only</span>
+            </p>
+            <hr>
+            <ul class="list-unstyled text-left">
+              <li><i class="fas fa-check-circle text-secondary"></i> Access only Android App</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add unlimited items</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Receive low stock notification</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Daily report sent to your email</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add 1 User + 3 staff</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Add Unlimited Store</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Automatic cloud backup</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> WhatsApp Chat/Calling support</li>
+              <li><i class="fas fa-check-circle text-secondary"></i> Many more...</li>
+            </ul>
+            <div class="form-check text-center my-2">
+              <input class="form-check-input" type="checkbox" id="extraStaff">
+              <label class="form-check-label" for="extraStaff">
+                Add Extra Staff
+              </label>
+            </div>
+            <button class="btn btn-primary btn-sm mt-auto pay-button">Pay ₹2832 <br> (Including GST)</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 
@@ -401,6 +530,24 @@
       </div>
     </div>
   </div>
+
+  <script>
+    function toggleBilling(option) {
+      var monthlyDiv = document.getElementById("monthly");
+      var yearlyDiv = document.getElementById("yearly");
+
+      if (option === "monthly") {
+        monthlyDiv.classList.remove("d-none");
+        yearlyDiv.classList.add("d-none");
+      } else if (option === "yearly") {
+        monthlyDiv.classList.add("d-none");
+        yearlyDiv.classList.remove("d-none");
+      } else if (option === "all") {
+        monthlyDiv.classList.remove("d-none");
+        yearlyDiv.classList.remove("d-none");
+      }
+    }
+  </script>
 
 
   <!-- JavaScript Libraries -->
