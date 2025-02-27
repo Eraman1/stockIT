@@ -10578,21 +10578,13 @@ h6,
 .whatsapp-float {
   position: fixed;
   bottom: 10px;
-  right: 20px;
-  background-color: #25d366;
-  color: white;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  right: 20px; 
   z-index: 1000;
-  transition: 0.3s;
-}
 
+}
+.whatsapp-float img:hover{
+  width: 47px;
+}
 
 
 .pay-button {

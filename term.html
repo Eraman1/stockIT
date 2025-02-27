@@ -1,571 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Stock It</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="Gst Billing Software" name="keywords" />
-    <meta content="Inventory application" name="description" />
 
-    <!-- Favicon -->
-    <link href="img/favicon_io (1)/favicon-32x32.png" rel="icon" />
+<head>
+  <meta charset="utf-8" />
+  <title>Stock It</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="Gst Billing Software" name="keywords" />
+  <meta content="Inventory application" name="description" />
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Favicon -->
+  <link href="img/favicon_io (1)/favicon-32x32.png" rel="icon" />
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet" />
-  </head>
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
 
-  <body>
-    <!-- Header Start -->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-3 bg-primary d-none d-lg-block">
-          <a
-            href=""
-            class="navbar-brand w-100 h-100 m-0 p-3 d-flex align-items-center justify-content-center"
-          >
-            <img src="/img/logo2.png" alt="" style="width: 12rem" />
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Header Start -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 bg-primary d-none d-lg-block">
+        <a href class="navbar-brand w-100 h-100 m-0 p-3 d-flex align-items-center justify-content-center">
+          <img src="/img/STOCK-It-Logo.png" alt style="width: 16rem" />
+        </a>
+      </div>
+      <div class="col-lg-9">
+        <div class="row bg-dark d-none d-lg-flex">
+          <div class="col-lg-7 text-left text-white">
+            <div class="h-100 d-inline-flex align-items-center border-right border-primary py-2 px-3">
+              <i class="fa fa-envelope text-primary mr-2"></i>
+              <small>support@rworldsoftware.in</small>
+            </div>
+            <div class="h-100 d-inline-flex align-items-center py-2 px-2">
+              <i class="fa fa-phone-alt text-primary mr-2"></i>
+              <small>+91-8377832378 | 01169310464</small>
+            </div>
+          </div>
+          <div class="col-lg-5 text-right">
+            <div class="d-inline-flex align-items-center pr-2">
+              <a class="text-primary p-2"
+                href="https://www.facebook.com/people/Stock-it-Inventory-manager-app/61556269179445/?rdid=sDHjPo9L4OYhKEKG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FDMmkQTmm%2F">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a class="text-primary p-2" href="https://www.linkedin.com/company/r-world-software">
+                <i class=" fab fa-linkedin-in"></i>
+              </a>
+              <a class="text-primary p-2" href="https://www.instagram.com/stock.it.app/?igsh=MXN5NGF2dDQydGF5bw%3D%3D#">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a class="text-primary p-2" href="https://www.youtube.com/@stock-it">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <nav class="navbar navbar-expand-lg  bg-white navbar-light p-0">
+          <a href class="navbar-brand d-block d-lg-none">
+            <!-- <h1 class="m-0 display-4 text-primary">Stock It</h1> -->
+            <img src="/img/STOCK-white.png" style="width: 8rem" height="auto" alt />
           </a>
-        </div>
-        <div class="col-lg-9">
-          <div class="row bg-dark d-none d-lg-flex">
-            <div class="col-lg-7 text-left text-white">
-              <div
-                class="h-100 d-inline-flex align-items-center border-right border-primary py-2 px-3"
-              >
-                <i class="fa fa-envelope text-primary mr-2"></i>
-                <small>support@rworldsoftware.in</small>
-              </div>
-              <div class="h-100 d-inline-flex align-items-center py-2 px-2">
-                <i class="fa fa-phone-alt text-primary mr-2"></i>
-                <small>+91-8377832378 | 01169310464</small>
-              </div>
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav mr-auto py-0">
+              <a href="index.html" class="nav-item nav-link">Home</a>
+              <a href="about.html" class="nav-item nav-link">About</a>
+              <a href="pricing.html" class="nav-item nav-link">Pricing</a>
+              <a data-toggle="modal" data-target="#tryMobileApp" class="nav-item nav-link"><i
+                  class="fa-solid fa-mobile-screen"></i> Mobile</a>
+              <a href="https://web.stock-it.in/" class="nav-item nav-link"><i class="fa-solid fa-laptop"></i>
+                Desktop</a>
+              <!-- <a href="project.html" class="nav-item nav-link">Project</a> -->
+              <!-- <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                                    <div class="dropdown-menu rounded-0 m-0">
+                                        <a href="blog.html" class="dropdown-item">Latest Blog</a>
+                                        <a href="single.html" class="dropdown-item">Blog Detail</a>
+                                    </div>
+                                </div>-->
+              <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
-            <div class="col-lg-5 text-right">
-              <div class="d-inline-flex align-items-center pr-2">
-                <a
-                  class="text-primary p-2"
-                  href="https://www.youtube.com/@stock-it"
-                >
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a
-                  class="text-primary p-2"
-                  href="https://www.youtube.com/@stock-it"
-                >
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a class="text-primary p-2" href="01169310464">
-                  <i class="fab fa-instagram"></i>
-                </a>
-                <a
-                  class="text-primary p-2"
-                  href="https://www.youtube.com/@stock-it"
-                >
-                  <i class="fab fa-youtube"></i>
-                </a>
-              </div>
-            </div>
+            <a href="https://web.stock-it.in/" class="btn btn-primary mr-3 d-none d-lg-block">Login</a>
           </div>
-          <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
-            <a href="" class="navbar-brand d-block d-lg-none">
-              <!-- <h1 class="m-0 display-4 text-primary">Stock It</h1> -->
-              <img
-                src="/img/STOCK IT  new logo.png"
-                style="width: 8rem"
-                height="auto"
-                alt=""
-              />
-            </a>
-            <button
-              type="button"
-              class="navbar-toggler"
-              data-toggle="collapse"
-              data-target="#navbarCollapse"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div
-              class="collapse navbar-collapse justify-content-between"
-              id="navbarCollapse"
-            >
-              <div class="navbar-nav mr-auto py-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="pricing.html" class="nav-item nav-link">Pricing</a>
-                <a
-                  data-toggle="modal"
-                  data-target="#tryMobileApp"
-                  class="nav-item nav-link"
-                  ><i class="fa-solid fa-mobile-screen"></i>Mobile</a
-                >
-                <a href="service.html" class="nav-item nav-link"
-                  ><i class="fa-solid fa-laptop"></i>Desktop</a
-                >
-                <!-- <a href="project.html" class="nav-item nav-link">Project</a> -->
-                <!-- <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="blog.html" class="dropdown-item">Latest Blog</a>
-                                    <a href="single.html" class="dropdown-item">Blog Detail</a>
-                                </div>
-                            </div>-->
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-              </div>
-              <a
-                href="https://web.stock-it.in/"
-                class="btn btn-primary mr-3 d-none d-lg-block"
-                >Login</a
-              >
-            </div>
-          </nav>
-        </div>
+        </nav>
       </div>
     </div>
-    <!-- Header End -->
+  </div>
+  <!-- Header End -->
 
-    <!-- Page Header Start -->
-    <div class="container-fluid bg-light py-5 mb-5">
-      <div class="container py-5">
-        <div class="row align-items-center py-4">
-          <div class="col-md-6 text-center text-md-left">
-            <h1 class="display-4 mb-4 mb-md-0 text-secondary text-uppercase">
-              Term & Condition
-            </h1>
-          </div>
-          <div class="col-md-6 text-center text-md-right">
-            <div class="d-inline-flex align-items-center">
-              <a class="btn btn-sm btn-outline-secondary" href="">Home</a>
-              <i class="fas fa-angle-double-right text-secondary mx-2"></i>
-              <a class="btn btn-sm btn-outline-secondary disabled" href=""
-                >Term & Condition</a
-              >
-            </div>
+  <!-- Page Header Start -->
+  <div class="container-fluid bg-light py-5 mb-5">
+    <div class="container py-5">
+      <div class="row align-items-center py-4">
+        <div class="col-md-6 text-center text-md-left">
+          <h1 class="display-4 mb-4 mb-md-0 text-secondary text-uppercase">
+            Term & Condition
+          </h1>
+        </div>
+        <div class="col-md-6 text-center text-md-right">
+          <div class="d-inline-flex align-items-center">
+            <a class="btn btn-sm btn-outline-secondary" href="index.html">Home</a>
+            <i class="fas fa-angle-double-right text-secondary mx-2"></i>
+            <a class="btn btn-sm btn-outline-secondary disabled" href="term.html">Term & Condition</a>
           </div>
         </div>
       </div>
     </div>
-    <!-- Page Header End -->
+  </div>
+  <!-- Page Header End -->
 
-    <!-- Contact Start -->
-    <div class="container-fluid py-5">
-      <div class="container mt-5">
-        <header class="text-center mb-4">
-          <h1 class="display-4 text-success">Terms and Conditions</h1>
-          <p class="lead">R-World Software (Stock it)</p>
-        </header>
+  <!-- Contact Start -->
+  <div class="container-fluid py-5">
+    <div class="container mt-5">
+      <header class="text-center mb-4">
+        <h1 class="display-4 text-success">Terms and Conditions</h1>
+        <p class="lead">R-World Software (Stock it)</p>
+      </header>
 
-        <section>
-          <h2 class="h3 text-dark">Introduction</h2>
-          <p>
-            These Website Standard Terms and Conditions written on this webpage
-            shall manage your use of our website, Stock it accessible at
-            <a href="http://www.stock-it.in" target="_blank">www.stock-it.in</a
-            >.
-          </p>
-          <p>
-            These Terms will be applied fully and affect your use of this
-            Website. By using this Website, you agree to accept all terms and
-            conditions written here. You must not use this Website if you
-            disagree with any of these Terms and Conditions. These Terms and
-            Conditions have been generated with the help of the Terms.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Introduction</h2>
+        <p>
+          These Website Standard Terms and Conditions written on this webpage
+          shall manage your use of our website, Stock it accessible at
+          <a href="http://www.stock-it.in" target="_blank">www.stock-it.in</a>.
+        </p>
+        <p>
+          These Terms will be applied fully and affect your use of this
+          Website. By using this Website, you agree to accept all terms and
+          conditions written here. You must not use this Website if you
+          disagree with any of these Terms and Conditions. These Terms and
+          Conditions have been generated with the help of the Terms.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Intellectual Property Rights</h2>
-          <p>
-            Other than the content you own, under these Terms, R-World Software
-            (Stock It) and/or its licensors own all the intellectual property
-            rights and materials contained in this Website.
-          </p>
-          <p>
-            You are granted a limited license only for purposes of viewing the
-            material contained on this Website.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Intellectual Property Rights</h2>
+        <p>
+          Other than the content you own, under these Terms, R-World Software
+          (Stock It) and/or its licensors own all the intellectual property
+          rights and materials contained in this Website.
+        </p>
+        <p>
+          You are granted a limited license only for purposes of viewing the
+          material contained on this Website.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Restrictions</h2>
-          <p>You are specifically restricted from all of the following:</p>
-          <ul>
-            <li>Publishing any Website material in any other media;</li>
-            <li>
-              Selling, sublicensing and/or otherwise commercializing any Website
-              material;
-            </li>
-            <li>Publicly performing and/or showing any Website material;</li>
-            <li>
-              Using this Website in any way that is or may be damaging to this
-              Website;
-            </li>
-            <li>
-              Using this Website in any way that impacts user access to this
-              Website;
-            </li>
-            <li>
-              Using this Website contrary to applicable laws and regulations, or
-              in any way that may cause harm to the Website, or to any person or
-              business entity;
-            </li>
-            <li>
-              Engaging in any data mining, data harvesting, data extracting or
-              any other similar activity in relation to this Website;
-            </li>
-            <li>
-              Using this Website to engage in any advertising or marketing.
-            </li>
-          </ul>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Restrictions</h2>
+        <p>You are specifically restricted from all of the following:</p>
+        <ul>
+          <li>Publishing any Website material in any other media;</li>
+          <li>
+            Selling, sublicensing and/or otherwise commercializing any Website
+            material;
+          </li>
+          <li>Publicly performing and/or showing any Website material;</li>
+          <li>
+            Using this Website in any way that is or may be damaging to this
+            Website;
+          </li>
+          <li>
+            Using this Website in any way that impacts user access to this
+            Website;
+          </li>
+          <li>
+            Using this Website contrary to applicable laws and regulations, or
+            in any way that may cause harm to the Website, or to any person or
+            business entity;
+          </li>
+          <li>
+            Engaging in any data mining, data harvesting, data extracting or
+            any other similar activity in relation to this Website;
+          </li>
+          <li>
+            Using this Website to engage in any advertising or marketing.
+          </li>
+        </ul>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Your Content</h2>
-          <p>
-            In these Website Standard Terms and Conditions, "Your Content" shall
-            mean any audio, video text, images, or other material you choose to
-            display on this Website. By displaying Your Content, you grant
-            R-World Software (Stock it) a non-exclusive, worldwide irrevocable,
-            sub-licensable license to use, reproduce, adapt, publish, translate,
-            and distribute it in any and all media.
-          </p>
-          <p>
-            Your Content must be your own and must not be invading any
-            third-party’s rights. R-World Software (Stock it) reserves the right
-            to remove any of Your Content from this Website at any time without
-            notice.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Your Content</h2>
+        <p>
+          In these Website Standard Terms and Conditions, "Your Content" shall
+          mean any audio, video text, images, or other material you choose to
+          display on this Website. By displaying Your Content, you grant
+          R-World Software (Stock it) a non-exclusive, worldwide irrevocable,
+          sub-licensable license to use, reproduce, adapt, publish, translate,
+          and distribute it in any and all media.
+        </p>
+        <p>
+          Your Content must be your own and must not be invading any
+          third-party’s rights. R-World Software (Stock it) reserves the right
+          to remove any of Your Content from this Website at any time without
+          notice.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Your Privacy</h2>
-          <p>
-            Please read our <a href="privacy-policy.html">Privacy Policy</a>.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Your Privacy</h2>
+        <p>
+          Please read our <a href="privacy-policy.html">Privacy Policy</a>.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">No Warranties</h2>
-          <p>
-            This Website is provided "as is," with all faults, and R-World
-            Software (Stock it) makes no representations or warranties, of any
-            kind related to this Website or the materials contained on this
-            Website. Also, nothing contained on this Website shall be
-            interpreted as advising you.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">No Warranties</h2>
+        <p>
+          This Website is provided "as is," with all faults, and R-World
+          Software (Stock it) makes no representations or warranties, of any
+          kind related to this Website or the materials contained on this
+          Website. Also, nothing contained on this Website shall be
+          interpreted as advising you.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Limitation of Liability</h2>
-          <p>
-            In no event shall R-World Software (Stock it), nor any of its
-            officers, directors, and employees, be held liable for anything
-            arising out of or in any way connected with your use of this
-            Website, whether such liability is under contract. R-World Software
-            (Stock it), including its officers, directors, and employees, shall
-            not be held liable for any indirect, consequential, or special
-            liability arising out of or in any way related to your use of this
-            Website.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Limitation of Liability</h2>
+        <p>
+          In no event shall R-World Software (Stock it), nor any of its
+          officers, directors, and employees, be held liable for anything
+          arising out of or in any way connected with your use of this
+          Website, whether such liability is under contract. R-World Software
+          (Stock it), including its officers, directors, and employees, shall
+          not be held liable for any indirect, consequential, or special
+          liability arising out of or in any way related to your use of this
+          Website.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Indemnification</h2>
-          <p>
-            You hereby indemnify to the fullest extent R-World Software (Stock
-            it) from and against any and/or all liabilities, costs, demands,
-            causes of action, damages, and expenses arising in any way related
-            to your breach of any of the provisions of these Terms.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Indemnification</h2>
+        <p>
+          You hereby indemnify to the fullest extent R-World Software (Stock
+          it) from and against any and/or all liabilities, costs, demands,
+          causes of action, damages, and expenses arising in any way related
+          to your breach of any of the provisions of these Terms.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Severability</h2>
-          <p>
-            If any provision of these Terms is found to be invalid under any
-            applicable law, such provisions shall be deleted without affecting
-            the remaining provisions herein.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Severability</h2>
+        <p>
+          If any provision of these Terms is found to be invalid under any
+          applicable law, such provisions shall be deleted without affecting
+          the remaining provisions herein.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Variation of Terms</h2>
-          <p>
-            R-World Software (Stock it) is permitted to revise these Terms at
-            any time as it sees fit, and by using this Website, you are expected
-            to review these Terms on a regular basis.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Variation of Terms</h2>
+        <p>
+          R-World Software (Stock it) is permitted to revise these Terms at
+          any time as it sees fit, and by using this Website, you are expected
+          to review these Terms on a regular basis.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Assignment</h2>
-          <p>
-            R-World Software (Stock it) is allowed to assign, transfer, and
-            subcontract its rights and/or obligations under these Terms without
-            any notification. However, you are not allowed to assign, transfer,
-            or subcontract any of your rights and/or obligations under these
-            Terms.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Assignment</h2>
+        <p>
+          R-World Software (Stock it) is allowed to assign, transfer, and
+          subcontract its rights and/or obligations under these Terms without
+          any notification. However, you are not allowed to assign, transfer,
+          or subcontract any of your rights and/or obligations under these
+          Terms.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Entire Agreement</h2>
-          <p>
-            These Terms constitute the entire agreement between R-World Software
-            (Stock it) and you in relation to your use of this Website, and
-            supersede all prior agreements and understandings.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Entire Agreement</h2>
+        <p>
+          These Terms constitute the entire agreement between R-World Software
+          (Stock it) and you in relation to your use of this Website, and
+          supersede all prior agreements and understandings.
+        </p>
+      </section>
 
-        <section>
-          <h2 class="h3 text-dark">Governing Law & Jurisdiction</h2>
-          <p>
-            These Terms will be governed by and interpreted in accordance with
-            the laws of the State of [insert state], and you submit to the
-            non-exclusive jurisdiction of the state and federal courts located
-            in [insert state] for the resolution of any disputes.
-          </p>
-        </section>
+      <section>
+        <h2 class="h3 text-dark">Governing Law & Jurisdiction</h2>
+        <p>
+          These Terms will be governed by and interpreted in accordance with
+          the laws of the State of [insert state], and you submit to the
+          non-exclusive jurisdiction of the state and federal courts located
+          in [insert state] for the resolution of any disputes.
+        </p>
+      </section>
+    </div>
+  </div>
+  <!-- Contact End -->
+
+  <!-- Footer Start -->
+  <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
+    <div class="row pt-5">
+      <div class="col-lg-3 col-md-6 mb-5">
+        <a href="index.html" class="navbar-brand">
+          <h1 class="m-0 mt-n3 display-4 text-primary">Stock It</h1>
+        </a>
+        <p>
+          Simplify inventory management, track stock with ease, and grow your
+          business smarter and faster!
+        </p>
+        <h5 class="font-weight-semi-bold text-white mb-2">Powered by</h5>
+        <a href="https://rworldsoftware.in">R-World Software</a>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-5">
+        <h4 class="font-weight-semi-bold text-primary mb-4">Get In Touch</h4>
+        <p>
+          <i class="fa fa-map-marker-alt text-primary mr-2"></i>Noida Sector
+          62 Rd, C Block, <br />
+          Phase 2, UP, India
+        </p>
+        <p>
+          <i class="fa fa-mobile-alt text-primary mr-2"></i>+91-8377832378
+        </p>
+        <p><i class="fa fa-phone-alt text-primary mr-2"></i>01169310464</p>
+
+        <p>
+          <i class="fa fa-envelope text-primary mr-2"></i>support@rworldsoftware.in
+        </p>
+        <div class="d-flex justify-content-start mt-4">
+          <a class="btn btn-light btn-social mr-2" href="https://www.youtube.com/@stock-it"><i
+              class="fab fa-youtube"></i></a>
+          <a class="btn btn-light btn-social mr-2"
+            href="https://www.facebook.com/people/Stock-it-Inventory-manager-app/61556269179445/?rdid=sDHjPo9L4OYhKEKG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FDMmkQTmm%2F"><i
+              class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/company/r-world-software"><i
+              class="fab fa-linkedin-in"></i></a>
+          <a class="btn btn-light btn-social"
+            href="https://www.instagram.com/stock.it.app/?igsh=MXN5NGF2dDQydGF5bw%3D%3D#"><i
+              class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-5">
+        <h4 class="font-weight-semi-bold text-primary mb-4">Quick Links</h4>
+        <div class="d-flex flex-column justify-content-start">
+          <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+          <a class="text-white mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+          <a class="text-white mb-2"
+            href="https://play.google.com/store/apps/details?id=com.companyname.stock_it_manager&pcampaignid=web_share"><i
+              class="fa fa-angle-right mr-2"></i>Try Mobile App</a>
+          <a class="text-white mb-2" href="https://web.stock-it.in/"><i class="fa fa-angle-right mr-2"></i>Desktop
+            Appliction</a>
+          <a class="text-white" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-5">
+        <h4 class="font-weight-semi-bold text-primary mb-4">Newsletter</h4>
+        <p>
+          Get the latest updates, inventory tips, and exclusive insights
+          straight to your inbox. Stay ahead with smarter stock management!
+        </p>
+        <div class="w-100">
+          <div class="input-group">
+            <input type="text" class="form-control border-0" style="padding: 25px" placeholder="Your Email" />
+            <div class="input-group-append">
+              <button class="btn btn-primary px-4">Sign Up</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- Contact End -->
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
-      <div class="row pt-5">
-        <div class="col-lg-3 col-md-6 mb-5">
-          <a href="index.html" class="navbar-brand">
-            <h1 class="m-0 mt-n3 display-4 text-primary">Stock It</h1>
-          </a>
-          <p>
-            Simplify inventory management, track stock with ease, and grow your
-            business smarter and faster!
-          </p>
-          <h5 class="font-weight-semi-bold text-white mb-2">Powered by</h5>
+  </div>
+  <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
+    style="border-color: #3e3e4e !important">
+    <div class="row">
+      <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+        <p class="m-0 text-white">
+          &copy; <a href="#">2025 Stock It</a>. All Rights Reserved. Designed
+          by
           <a href="https://rworldsoftware.in">R-World Software</a>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5">
-          <h4 class="font-weight-semi-bold text-primary mb-4">Get In Touch</h4>
-          <p>
-            <i class="fa fa-map-marker-alt text-primary mr-2"></i>Noida Sector
-            62 Rd, C Block, <br />
-            Phase 2, UP, India
-          </p>
-          <p>
-            <i class="fa fa-mobile-alt text-primary mr-2"></i>+91-8377832378
-          </p>
-          <p><i class="fa fa-phone-alt text-primary mr-2"></i>01169310464</p>
-
-          <p>
-            <i class="fa fa-envelope text-primary mr-2"></i
-            >support@rworldsoftware.in
-          </p>
-          <div class="d-flex justify-content-start mt-4">
-            <a
-              class="btn btn-light btn-social mr-2"
-              href="https://www.youtube.com/@stock-it"
-              ><i class="fab fa-youtube"></i
-            ></a>
-            <a
-              class="btn btn-light btn-social mr-2"
-              href="https://www.facebook.com/people/Stock-it-Inventory-manager-app/61556269179445/?rdid=sDHjPo9L4OYhKEKG&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1FDMmkQTmm%2F"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a
-              class="btn btn-light btn-social mr-2"
-              href="https://www.linkedin.com/company/r-world-software"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a
-              class="btn btn-light btn-social"
-              href="https://www.instagram.com/stock.it.app/?igsh=MXN5NGF2dDQydGF5bw%3D%3D#"
-              ><i class="fab fa-instagram"></i
-            ></a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5">
-          <h4 class="font-weight-semi-bold text-primary mb-4">Quick Links</h4>
-          <div class="d-flex flex-column justify-content-start">
-            <a class="text-white mb-2" href="index.html"
-              ><i class="fa fa-angle-right mr-2"></i>Home</a
-            >
-            <a class="text-white mb-2" href="about.html"
-              ><i class="fa fa-angle-right mr-2"></i>About Us</a
-            >
-            <a
-              class="text-white mb-2"
-              href="https://play.google.com/store/apps/details?id=com.companyname.stock_it_manager&pcampaignid=web_share"
-              ><i class="fa fa-angle-right mr-2"></i>Try Mobile App</a
-            >
-            <a class="text-white mb-2" href="https://web.stock-it.in/"
-              ><i class="fa fa-angle-right mr-2"></i>Desktop Appliction</a
-            >
-            <a class="text-white" href="contact.html"
-              ><i class="fa fa-angle-right mr-2"></i>Contact Us</a
-            >
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5">
-          <h4 class="font-weight-semi-bold text-primary mb-4">Newsletter</h4>
-          <p>
-            Get the latest updates, inventory tips, and exclusive insights
-            straight to your inbox. Stay ahead with smarter stock management!
-          </p>
-          <div class="w-100">
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control border-0"
-                style="padding: 25px"
-                placeholder="Your Email"
-              />
-              <div class="input-group-append">
-                <button class="btn btn-primary px-4">Sign Up</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        </p>
       </div>
-    </div>
-    <div
-      class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
-      style="border-color: #3e3e4e !important"
-    >
-      <div class="row">
-        <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-          <p class="m-0 text-white">
-            &copy; <a href="#">2025 Stock It</a>. All Rights Reserved. Designed
-            by
-            <a href="https://rworldsoftware.in">R-World Software</a>
-          </p>
-        </div>
-        <div class="col-lg-6 text-center text-md-right">
-          <ul class="nav d-inline-flex">
-            <li class="nav-item">
-              <a class="nav-link text-white py-0" href="privacy.html"
-                >Privacy Policy</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white py-0" href="term.html"
-                >Terms & Condition</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white py-0" href="return.html"
-                >Return Policy</a
-              >
-            </li>
-            <!-- <li class="nav-item">
+      <div class="col-lg-6 text-center text-md-right">
+        <ul class="nav d-inline-flex">
+          <li class="nav-item">
+            <a class="nav-link text-white py-0" href="privacy.html">Privacy Policy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white py-0" href="term.html">Terms & Condition</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white py-0" href="return.html">Return Policy</a>
+          </li>
+          <!-- <li class="nav-item">
               <a class="nav-link text-white py-0" href="#">Help</a>
             </li> -->
-          </ul>
-        </div>
+        </ul>
       </div>
     </div>
-    <!-- Footer End -->
+  </div>
+  <!-- Footer End -->
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary px-3 back-to-top"
-      ><i class="fa fa-angle-double-up"></i
-    ></a>
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-primary px-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
-    <!-- whatsapp icon -->
-    <a
-      href="https://wa.me/yourwhatsappnumber"
-      class="whatsapp-float"
-      target="_blank"
-    >
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
+  <!-- whatsapp icon -->
+  <a href="https://wa.me/918377832378" class="whatsapp-float" target="_blank">
+    <img src="/img/whatsapp.png" width="45px" alt="">
+  </a>
 
-    <!-- modal of mobile app -->
+  <!-- modal of mobile app -->
 
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="tryMobileApp"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" style="max-width: 350px" role="document">
-        <div class="modal-content p-3 rounded">
-          <div class="modal-header border-0">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body text-center">
-            <!-- QR Code -->
-            <img
-              src="/img/barcode.png"
-              class="mx-auto"
-              width="120"
-              alt="QR Code"
-            />
+  <!-- Modal -->
+  <div class="modal fade" id="tryMobileApp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 350px" role="document">
+      <div class="modal-content p-3 rounded">
+        <div class="modal-header border-0">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <!-- QR Code -->
+          <img src="/img/barcode.png" class="mx-auto" width="120" alt="QR Code" />
 
-            <!-- Heading -->
-            <h5 class="font-weight-bold mt-3">Scan with your mobile camera</h5>
+          <!-- Heading -->
+          <h5 class="font-weight-bold mt-3">Scan with your mobile camera</h5>
 
-            <!-- Description -->
-            <p class="text-muted">
-              Monitor your business activity from anywhere in the world, sync
-              mobile app with desktop app.
-            </p>
+          <!-- Description -->
+          <p class="text-muted">
+            Monitor your business activity from anywhere in the world, sync
+            mobile app with desktop app.
+          </p>
 
-            <!-- Mobile Input -->
-            <!-- <input
+          <!-- Mobile Input -->
+          <!-- <input
               type="text"
               class="form-control text-center mt-2"
               placeholder="Enter Mobile Number"
             /> -->
 
-            <!-- Get The App Button -->
-            <a href="" class="btn btn-secondary btn-block mt-3">
-              Get The App
-            </a>
-          </div>
+          <!-- Get The App Button -->
+          <a href="" class="btn btn-secondary btn-block mt-3">
+            Get The App
+          </a>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+  <!-- Contact Javascript File -->
+  <script src="mail/jqBootstrapValidation.min.js"></script>
+  <script src="mail/contact.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-  </body>
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
+</body>
+
 </html>
