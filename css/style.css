@@ -10411,27 +10411,36 @@ h6,
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url(../img/bgStore5.jpg), no-repeat center center;
   background-size: cover;
+  
 }
 .bg-aboutBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/aboutBaneer.png), no-repeat center center;
-  background-size:contain;
+    url(../img/contactBanner.png), no-repeat center center;
+  background-size:cover;
+   max-width: 100%;
+  height: auto;
 }
 
 .bg-priceBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/priceBanner.png), no-repeat center center;
-  background-size:contain;
+    url(../img/contactBanner.png), no-repeat center center;
+  background-size:cover;
+   max-width: 100%;
+  height: auto;
 }
 .bg-desktopBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/desktopBanner.png), no-repeat center center;
+    url(../img/contactBanner.png), no-repeat center center;
   background-size:cover;
+   max-width: 100%;
+  height: auto;
 }
 .bg-contactBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url(../img/contactBanner.png), no-repeat center center;
   background-size:cover;
+   max-width: 100%;
+  height: auto;
 }
 
 .owl-carousel .owl-nav {
