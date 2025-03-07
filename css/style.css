@@ -10412,6 +10412,27 @@ h6,
     url(../img/bgStore5.jpg), no-repeat center center;
   background-size: cover;
 }
+.bg-aboutBanner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../img/aboutBaneer.png), no-repeat center center;
+  background-size:contain;
+}
+
+.bg-priceBanner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../img/priceBanner.png), no-repeat center center;
+  background-size:contain;
+}
+.bg-desktopBanner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../img/desktopBanner.png), no-repeat center center;
+  background-size:cover;
+}
+.bg-contactBanner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../img/contactBanner.png), no-repeat center center;
+  background-size:cover;
+}
 
 .owl-carousel .owl-nav {
   position: absolute;
@@ -10591,3 +10612,27 @@ h6,
     font-size: 0.875rem; /* Adjust the size as needed */
     padding: 0.25rem 0.5rem; /* Adjust the padding as needed */
 }
+
+ .feature-box {
+            background-color: #f8fcff; /* Light blue background */
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            height: 100%; /* Ensures uniform height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        .feature-box i {
+            font-size: 5rem;
+            color: #FFC600; /* Accent color */
+            margin-bottom: 10px;
+        }
+        .feature-text {
+            font-weight: 600;
+        }
