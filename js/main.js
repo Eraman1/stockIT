@@ -404,3 +404,6 @@ function toggleBilling(option) {
         yearlyDiv.classList.remove("d-none");
       }
     }
+
+
+    
