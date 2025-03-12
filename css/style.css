@@ -10635,7 +10635,9 @@ h6,
             justify-content: center;
         }
         .feature-box:hover {
+          background-color: var(--secondary);
             transform: translateY(-5px);
+            color: #ffffff;
         }
         .feature-box i {
             font-size: 5rem;
