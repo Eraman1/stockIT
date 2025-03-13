@@ -406,4 +406,33 @@ function toggleBilling(option) {
     }
 
 
-    
+   document.addEventListener("DOMContentLoaded", function () {
+    function animateText(element) {
+        let text = element.innerText;
+        let newHtml = "";
+        element.innerHTML = ""; // Clear original text
+
+        // Wrap each letter in a span
+        text.split("").forEach((letter, index) => {
+            newHtml += `<span style="opacity:0">${letter}</span>`;
+        });
+
+        element.innerHTML = newHtml;
+
+        // GSAP animation: Show letters one by one, then fade out and restart
+        gsap.fromTo(element.children, 
+            { opacity: 0 }, 
+            { 
+                opacity: 1, 
+                stagger: 0.05, // Delay between each letter
+                duration: 0.5, 
+                ease: "power2.out",
+                repeat: -1, // Infinite loop
+                yoyo: true, // Reverse after complete
+                delay: 1 // Wait before starting again
+            }
+        );
+    }
+
+    document.querySelectorAll("h1.text-animate").forEach(animateText);
+});

@@ -10415,7 +10415,7 @@ h6,
 }
 .bg-aboutBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/contactBanner.png), no-repeat center center;
+    url(../img/banner/about\ us.png), no-repeat center center;
   background-size:cover;
    max-width: 100%;
   height: auto;
@@ -10423,21 +10423,21 @@ h6,
 
 .bg-priceBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/contactBanner.png), no-repeat center center;
+    url(../img/banner/pricing.png), no-repeat center center;
   background-size:cover;
    max-width: 100%;
   height: auto;
 }
 .bg-desktopBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/contactBanner.png), no-repeat center center;
+    url(../img/banner/stock\ it\ for\ pc.png), no-repeat center center;
   background-size:cover;
    max-width: 100%;
   height: auto;
 }
 .bg-contactBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/contactBanner.png), no-repeat center center;
+    url(../img/banner/contact.png), no-repeat center center;
   background-size:cover;
    max-width: 100%;
   height: auto;
@@ -10647,3 +10647,5 @@ h6,
         .feature-text {
             font-weight: 600;
         }
+
+  
