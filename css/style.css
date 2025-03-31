@@ -10423,7 +10423,7 @@ h6,
 
 .bg-priceBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/banner/pricing.png), no-repeat center center;
+    url(../img/banner/forPricing.png), no-repeat center center;
   background-size:cover;
    max-width: 100%;
   height: auto;
