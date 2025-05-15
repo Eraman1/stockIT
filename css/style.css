@@ -5,6 +5,14 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ @font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -10180,8 +10188,8 @@ h6,
 .back-to-top {
   position: fixed;
   display: none;
-  right: 32px;
-  bottom: 90px;
+  right: 23px;
+  bottom: 70px;
   z-index: 11;
 }
 
@@ -10282,7 +10290,10 @@ h6,
     font-size: 14px;
     font-weight: 400;
   }
-  .carousel-caption h1 {
+  .carousel-caption h1,
+  .carousel-caption h2,
+  .carousel-caption h3 {
+   
     font-size: 25px;
     font-weight: 500 !important;
   }
@@ -10296,6 +10307,20 @@ h6,
   .contact-info .contact-info-item {
     min-height: 200px;
   }
+}
+.contact-info-item {
+  min-height: 100px; /* or an appropriate fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.contact-info-item i {
+  width: 50px;
+  height: 50px;
 }
 
 .btn-play {
@@ -10391,31 +10416,48 @@ h6,
 
 .bg-about {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/about2.png), no-repeat center center;
+    url(../img/about2.webp), no-repeat center center;
   background-size: cover;
 }
 
 .bg-service {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/carousel-1.jpg), no-repeat center center;
+    url(../img/carousel-1.webp), no-repeat center center;
   background-size: cover;
 }
 
 .bg-portfolio {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/carousel-2.jpg), no-repeat center center;
+    url(../img/carousel-2.webp), no-repeat center center;
   background-size: cover;
 }
 
-.bg-testimonial {
+/* .bg-testimonial {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/bgStore5.jpg), no-repeat center center;
+    url(../img/bgStore5.webp), no-repeat center center;
   background-size: cover;
   
+} */
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.3; /* same as rgba overlay */
 }
+
+.bg-testimonial {
+   background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 2));
+  position: relative;
+  overflow: hidden;
+}
+
 .bg-aboutBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/banner/about\ us.png), no-repeat center center;
+    url(../img/banner/about\ us.webp), no-repeat center center;
   background-size:cover;
    max-width: 100%;
   height: auto;
@@ -10423,21 +10465,21 @@ h6,
 
 .bg-priceBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/banner/forPricing.png), no-repeat center center;
+    url(../img/banner/forPricing.webp), no-repeat center center;
   background-size:cover;
    max-width: 100%;
   height: auto;
 }
 .bg-desktopBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/banner/stock\ it\ for\ pc.png), no-repeat center center;
+    url(../img/banner/stock\ it\ for\ pc.webp), no-repeat center center;
   background-size:cover;
    max-width: 100%;
   height: auto;
 }
 .bg-contactBanner {
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(../img/banner/contact.png), no-repeat center center;
+    url(../img/banner/contact.webp), no-repeat center center;
   background-size:cover;
    max-width: 100%;
   height: auto;
@@ -10608,7 +10650,7 @@ h6,
 .whatsapp-float {
   position: fixed;
   bottom: 10px;
-  left: 20px; 
+  right: 20px; 
   z-index: 1000;
 
 }
@@ -10648,4 +10690,32 @@ h6,
             font-weight: 600;
         }
 
+  .pointImage{
+    object-fit: cover; max-height: 25rem
+  }
+
+
+  .youtube-video {
+    position: relative;
+    width: 560px;
+    height: 315px;
+    cursor: pointer;
+  }
+  
+  .youtube-video img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 10px;
+  }
   

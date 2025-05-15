@@ -185,6 +185,13 @@ const featureTitle = document.getElementById("feature-title");
 const featureContent = document.getElementById("feature-content");
 
 const contentMap = {
+  "Best Inventory Management Software in India": `Stock It is your all-in-one GST billing, accounting, and inventory software, purpose-built to simplify business operations and boost efficiency for small and medium enterprises across India. From inventory tracking to invoicing and GST return filing, Stock It brings all your essential tools into one seamless, easy-to-use platform.<br><br>
+
+Recognized as <b>the Best Inventory Management Software in India</b>, Stock It empowers businesses to save time, reduce manual errors, and make smarter, data-driven decisions.<br><br>
+
+Whether you're streamlining your stock movement, generating invoices in seconds, or keeping up with tax compliance, Stock It delivers unmatched reliability and performance.<br><br>
+
+Thousands of businesses rely on Stock It, proud to call it <b>the Best Inventory Software in India</b> for driving operational excellence and business growth.`,
   "Track Orders": `Using our advanced GST-compliant software for billing makes creating
    sales or purchase order formats easier.<br><br>
 It helps set up a due date for seamless order tracking. With Stock It GST Accounting and Billing 
@@ -327,12 +334,11 @@ document.querySelectorAll(".toggle-btn").forEach((button) => {
 const faqs = [
   {
     question: "Which is the best software for billing?",
-    answer: `Stock It is the ultimate billing software designed for SMEs in 
-              India, offering a range of powerful features to streamline 
-              business management. <br/><br/>
-              With Stock It, you can save time and effort by automating GST 
-              invoicing, tracking inventory in real-time, and generating 
-              detailed reports using stored data.`
+    answer: `Stock It is the ultimate billing software designed for SMEs in India, offering a range of powerful features to streamline business management. Recognized as <b>the best inventory management software in India</b>, Stock It helps businesses stay organized and efficient.
+<br> <br>
+With Stock It, you can save time and effort by automating GST invoicing, tracking inventory in real-time, and generating detailed reports using stored data.
+
+`
   },
   {
     question: "What is billing software?",
@@ -374,9 +380,8 @@ function generateFAQ() {
               <i class="fas fa-chevron-down"></i>
             </h6>
           </div>
-          <div id="collapse${index}" class="collapse ${
-        index === 0 ? "show" : ""
-      }" 
+          <div id="collapse${index}" class="collapse ${index === 0 ? "show" : ""
+        }" 
               role="tabpanel" aria-labelledby="heading${index}" data-parent="#faqAccordion">
             <div class="card-body">${faq.answer}</div>
           </div>
@@ -390,49 +395,70 @@ generateFAQ();
 
 
 function toggleBilling(option) {
-      var monthlyDiv = document.getElementById("monthly");
-      var yearlyDiv = document.getElementById("yearly");
+  var monthlyDiv = document.getElementById("monthly");
+  var yearlyDiv = document.getElementById("yearly");
 
-      if (option === "monthly") {
-        monthlyDiv.classList.remove("d-none");
-        yearlyDiv.classList.add("d-none");
-      } else if (option === "yearly") {
-        monthlyDiv.classList.add("d-none");
-        yearlyDiv.classList.remove("d-none");
-      } else if (option === "all") {
-        monthlyDiv.classList.remove("d-none");
-        yearlyDiv.classList.remove("d-none");
+  if (option === "monthly") {
+    monthlyDiv.classList.remove("d-none");
+    yearlyDiv.classList.add("d-none");
+  } else if (option === "yearly") {
+    monthlyDiv.classList.add("d-none");
+    yearlyDiv.classList.remove("d-none");
+  } else if (option === "all") {
+    monthlyDiv.classList.remove("d-none");
+    yearlyDiv.classList.remove("d-none");
+  }
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  function animateText(element) {
+    let text = element.innerText;
+    let newHtml = "";
+    element.innerHTML = ""; // Clear original text
+
+    // Wrap each letter in a span
+    text.split("").forEach((letter, index) => {
+      newHtml += `<span style="opacity:0">${letter}</span>`;
+    });
+
+    element.innerHTML = newHtml;
+
+    // GSAP animation: Show letters one by one, then fade out and restart
+    gsap.fromTo(element.children,
+      { opacity: 0 },
+      {
+        opacity: 1,
+        stagger: 0.05, // Delay between each letter
+        duration: 0.5,
+        ease: "power2.out",
+        repeat: -1, // Infinite loop
+        yoyo: true, // Reverse after complete
+        delay: 1 // Wait before starting again
       }
-    }
+    );
+  }
 
-
-   document.addEventListener("DOMContentLoaded", function () {
-    function animateText(element) {
-        let text = element.innerText;
-        let newHtml = "";
-        element.innerHTML = ""; // Clear original text
-
-        // Wrap each letter in a span
-        text.split("").forEach((letter, index) => {
-            newHtml += `<span style="opacity:0">${letter}</span>`;
-        });
-
-        element.innerHTML = newHtml;
-
-        // GSAP animation: Show letters one by one, then fade out and restart
-        gsap.fromTo(element.children, 
-            { opacity: 0 }, 
-            { 
-                opacity: 1, 
-                stagger: 0.05, // Delay between each letter
-                duration: 0.5, 
-                ease: "power2.out",
-                repeat: -1, // Infinite loop
-                yoyo: true, // Reverse after complete
-                delay: 1 // Wait before starting again
-            }
-        );
-    }
-
-    document.querySelectorAll("h1.text-animate").forEach(animateText);
+  document.querySelectorAll("h1.text-animate,h2.text-animate,h3.text-animate").forEach(animateText);
 });
+
+
+function loadYoutube() {
+  const facade = document.querySelector('.youtube-facade');
+  facade.innerHTML = `
+    <iframe src="https://www.youtube.com/embed/7AKiDiMKfog?autoplay=1&mute=1&modestbranding=1&playsinline=1"
+      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+      style="width: 100%; height: 100%; border-radius: 10px;">
+    </iframe>
+  `;
+}
+
+function loadVideo() {
+  const videoContainer = document.querySelector('.youtube-video');
+  videoContainer.innerHTML = `
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/NbmuLO_JUgw?autoplay=1&rel=0"
+      title="YouTube video player" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  `;
+}
