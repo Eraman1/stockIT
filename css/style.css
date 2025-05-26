@@ -10718,4 +10718,30 @@ h6,
     border-radius: 50%;
     padding: 10px;
   }
-  
+  .tools .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  .tools .card {
+    transition: all 0.3s ease;
+  }
+ .tools .card-icon {
+    font-size: 30px;
+    color: #007bff;
+  }
+
+
+  .custom-placeholder::placeholder {
+    color: #23a036; /* This is Bootstrap's text-secondary color */
+  }
+
+  .custom-placeholder-2::placeholder {
+    color: #ffc600; /* This is Bootstrap's text-secondary color */
+  }
+
+  .no-calendar-icon::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+
