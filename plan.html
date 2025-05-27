@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 12px 20px;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Plan Cards Container */
+        .plans-container {
+            margin-bottom: 32px;
+        }
+
+        .plans-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 8px 0 16px 0;
+            scroll-behavior: smooth;
+        }
+
+        .plans-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .plans-scroll::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .plans-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        .plan-card {
+            min-width: 280px;
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .plan-card.selected {
+            border: 2px solid #667eea;
+            transform: translateY(-2px);
+        }
+
+        .plan-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 7px 14px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-bottom-left-radius: 8px;
+        }
+
+        .plan-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .price-section {
+            margin-bottom: 16px;
+        }
+
+        .actual-price {
+            font-size: 0.9rem;
+            color: #a0aec0;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .offer-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+
+        .price-period {
+            font-size: 0.9rem;
+            color: #718096;
+        }
+
+        .plan-details {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 16px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .detail-label {
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        /* Features Card */
+        .features-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .features-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .feature-text {
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        /* User Count Control */
+        .user-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: #f7fafc;
+            border-radius: 12px;
+        }
+
+        .user-control-label {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .user-count-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-count-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .user-count-btn:hover {
+            background: #5a67d8;
+            transform: scale(1.05);
+        }
+
+        .user-count-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .user-count {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2d3748;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        /* Buy Button */
+        .buy-button {
+            width: 100%;
+            padding: 16px 32px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+        }
+
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+        }
+
+        .buy-button:active {
+            transform: translateY(0);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .plan-card {
+                min-width: 260px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .user-control {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Choose Your Plan</h1>
+            <p>Select the perfect plan for your needs</p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="switchTab('monthly')">Monthly Price</button>
+            <button class="tab-button" onclick="switchTab('yearly')">Yearly Price</button>
+        </div>
+
+        <!-- Monthly Plans -->
+        <div id="monthly" class="tab-content active">
+            <div class="plans-container">
+                <div class="plans-scroll">
+                    <div class="plan-card" onclick="selectPlan(this)">
+                        <div class="plan-name">Basic Monthly</div>
+                        <div class="price-section">
+                            <div class="actual-price">₹100</div>
+                            <div class="offer-price">₹60</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="plan-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Devices:</span>
+                                <span class="detail-value">Android</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Users:</span>
+                                <span class="detail-value">1 User</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="plan-card popular" onclick="selectPlan(this)">
+                        <div class="plan-name">Pro Monthly</div>
+                        <div class="price-section">
+                            <div class="actual-price">₹250</div>
+                            <div class="offer-price">₹130</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="plan-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Devices:</span>
+                                <span class="detail-value">Android</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Users:</span>
+                                <span class="detail-value">4 Users</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="plan-card" onclick="selectPlan(this)">
+                        <div class="plan-name">Basic Plus Monthly</div>
+                        <div class="price-section">
+                            <div class="actual-price">₹160</div>
+                            <div class="offer-price">₹140</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="plan-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Devices:</span>
+                                <span class="detail-value">Android + Desktop</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Users:</span>
+                                <span class="detail-value">1 user</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="plan-card popular" onclick="selectPlan(this)">
+                        <div class="plan-name">Pro Plus Monthly</div>
+                        <div class="price-section">
+                            <div class="actual-price">₹323</div>
+                            <div class="offer-price">₹240</div>
+                            <div class="price-period">per month</div>
+                        </div>
+                        <div class="plan-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Devices:</span>
+                                <span class="detail-value">Android + Desktop</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Users:</span>
+                                <span class="detail-value">4 Users</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Yearly Plans -->
+        <div id="yearly" class="tab-content">
+            <div class="plans-container">
+                <div class="plans-scroll">
+                    <div class="plan-card" onclick="selectPlan(this)">
+                        <div class="plan-name">Basic Yealy</div>
+                        <div class="price-section">
+                            <div class="actual-price">₹830</div>
+                            <div class="offer-price">₹620</div>
+                            <div class="price-period">per year</div>
+                        </div>
+                        <div class="plan-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Devices:</span>
+                                <span class="detail-value">Android</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Users:</span>
+                                <span class="detail-value">1 User</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="plan-card popular" onclick="selectPlan(this)">
+                        <div class="plan-name">Pro Yearly</div>
+                        <div class="price-section">
+                            <div class="actual-price">₹1670</div>
+                            <div class="offer-price">₹1260</div>
+                            <div class="price-period">per year</div>
+                        </div>
+                        <div class="plan-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Devices:</span>
+                                <span class="detail-value">Android</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Users:</span>
+                                <span class="detail-value">4 Users</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="plan-card" onclick="selectPlan(this)">
+                        <div class="plan-name">Basic Plus Yearly</div>
+                        <div class="price-section">
+                            <div class="actual-price">₹1900</div>
+                            <div class="offer-price">₹1400</div>
+                            <div class="price-period">per year</div>
+                        </div>
+                        <div class="plan-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Devices:</span>
+                                <span class="detail-value">Android + Desktop</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Users:</span>
+                                <span class="detail-value">1 User</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="plan-card" onclick="selectPlan(this)">
+                        <div class="plan-name">Pro Plus Yearly</div>
+                        <div class="price-section">
+                            <div class="actual-price">₹2900</div>
+                            <div class="offer-price">₹2400</div>
+                            <div class="price-period">per year</div>
+                        </div>
+                        <div class="plan-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Devices:</span>
+                                <span class="detail-value">Android + Desktop</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Users:</span>
+                                <span class="detail-value">4 Users</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Card -->
+        <div class="features-card">
+            <h3 class="features-title">What's Included</h3>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">24/7 Customer Support</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">Cloud Storage</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">Advanced Analytics</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">Mobile App Access</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">Low Stock Warning</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-text">Data Backup</div>
+                </div>
+            </div>
+
+            <!-- User Count Control -->
+            <div class="user-control">
+                <span class="user-control-label">Number of Users:</span>
+                <div class="user-count-container">
+                    <button class="user-count-btn" onclick="decreaseUsers()" id="decreaseBtn">-</button>
+                    <span class="user-count" id="userCount">1</span>
+                    <button class="user-count-btn" onclick="increaseUsers()">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buy Button -->
+        <button class="buy-button" onclick="buyPlan()">
+            Buy Selected Plan
+        </button>
+    </div>
+
+    <script>
+        let currentUsers = 1;
+        let selectedPlan = null;
+
+        function switchTab(tabName) {
+            // Remove active class from all tabs and content
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            // Add active class to clicked tab and corresponding content
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+
+            // Clear selected plan when switching tabs
+            document.querySelectorAll('.plan-card').forEach(card => card.classList.remove('selected'));
+            selectedPlan = null;
+        }
+
+        function selectPlan(planCard) {
+            // Remove selected class from all cards
+            document.querySelectorAll('.plan-card').forEach(card => card.classList.remove('selected'));
+
+            // Add selected class to clicked card
+            planCard.classList.add('selected');
+
+            // Store selected plan info
+            selectedPlan = {
+                name: planCard.querySelector('.plan-name').textContent,
+                price: planCard.querySelector('.offer-price').textContent,
+                period: planCard.querySelector('.price-period').textContent
+            };
+        }
+
+        function increaseUsers() {
+            if (currentUsers < 50) {
+                currentUsers++;
+                updateUserDisplay();
+            }
+        }
+
+        function decreaseUsers() {
+            if (currentUsers > 1) {
+                currentUsers--;
+                updateUserDisplay();
+            }
+        }
+
+        function updateUserDisplay() {
+            document.getElementById('userCount').textContent = currentUsers;
+            document.getElementById('decreaseBtn').disabled = currentUsers <= 1;
+        }
+
+        function buyPlan() {
+            if (!selectedPlan) {
+                alert('Please select a plan first!');
+                return;
+            }
+
+            const message = `You selected:\nPlan: ${selectedPlan.name}\nPrice: ${selectedPlan.price} ${selectedPlan.period}\nUsers: ${currentUsers}\n\nProceeding to checkout...`;
+            alert(message);
+        }
+
+        // Initialize
+        updateUserDisplay();
+    </script>
+</body>
+
+</html>
