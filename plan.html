@@ -26,9 +26,8 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            /* background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%); */
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
             padding: 12px 0;
-            /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
         }
 
         .container {
@@ -103,11 +102,12 @@
             display: flex;
             gap: 12px;
             min-width: max-content;
-            padding: 0 4px;
+            padding: 10 4px;
             justify-content: center;
         }
 
         .plan-card {
+            margin-top: 5px;
             background: white;
             border-radius: 12px;
             padding: 16px;
@@ -437,7 +437,7 @@
 
             .main-content {
                 padding-top: 320px;
-                padding-bottom: 80px;
+                padding-bottom: 120px;
                 padding-left: 12px;
                 padding-right: 12px;
             }
@@ -473,21 +473,43 @@
                 font-size: 12px;
             }
 
+            /* Enhanced Mobile Bottom Container */
             .bottom-content {
-                padding: 10px 12px;
-                flex-direction: column;
-                gap: 8px;
-                text-align: center;
+                padding: 8px 12px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+            }
+
+            .total-section {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .plan-info {
+                font-size: 11px;
+                margin-bottom: 1px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             .total-amount {
-                font-size: 16px;
+                font-size: 14px;
+                line-height: 1.2;
+            }
+
+            .gst-info {
+                font-size: 9px;
             }
 
             .buy-button {
-                padding: 10px 20px;
-                font-size: 13px;
-                width: 100%;
+                padding: 8px 16px;
+                font-size: 12px;
+                white-space: nowrap;
+                flex-shrink: 0;
+                min-width: 100px;
             }
         }
 
@@ -515,13 +537,38 @@
 
             .main-content {
                 padding-top: 320px;
+                padding-bottom: 110px;
+            }
+
+            /* Extra compact mobile bottom */
+            .bottom-content {
+                padding: 6px 8px;
+                gap: 8px;
+            }
+
+            .plan-info {
+                font-size: 10px;
+            }
+
+            .total-amount {
+                font-size: 13px;
+            }
+
+            .gst-info {
+                font-size: 8px;
+            }
+
+            .buy-button {
+                padding: 6px 12px;
+                font-size: 11px;
+                min-width: 80px;
             }
         }
 
         /* Large screens */
         @media (min-width: 1024px) {
             .main-content {
-                padding-top: 320px;
+                padding-top: 350px;
             }
         }
     </style>
@@ -543,7 +590,8 @@
             <div id="monthly" class="tab-content active">
                 <div class="plans-scroll-container">
                     <div class="plans-container">
-                        <div class="plan-card" onclick="selectPlan(this, 'basic-monthly')" data-plan="basic-monthly">
+                        <div class="plan-card" onclick="selectPlan(this, 'basic-monthly')" data-plan="basic-monthly"
+                            id="basic-monthly-card">
                             <div class="plan-name">Basic Monthly</div>
                             <div class="price-section">
                                 <div class="actual-price">₹100</div>
@@ -630,7 +678,8 @@
             <div id="yearly" class="tab-content">
                 <div class="plans-scroll-container">
                     <div class="plans-container">
-                        <div class="plan-card" onclick="selectPlan(this, 'basic-yearly')" data-plan="basic-yearly">
+                        <div class="plan-card" onclick="selectPlan(this, 'basic-yearly')" data-plan="basic-yearly"
+                            id="basic-yearly-card">
                             <div class="plan-name">Basic Yearly</div>
                             <div class="price-section">
                                 <div class="actual-price">₹830</div>
@@ -832,6 +881,21 @@
 
             // Clear selected plan when switching tabs
             clearSelection();
+
+            // Auto-select the appropriate basic plan based on the tab
+            setTimeout(() => {
+                if (tabName === 'monthly') {
+                    const basicMonthlyCard = document.getElementById('basic-monthly-card');
+                    if (basicMonthlyCard) {
+                        selectPlan(basicMonthlyCard, 'basic-monthly');
+                    }
+                } else if (tabName === 'yearly') {
+                    const basicYearlyCard = document.getElementById('basic-yearly-card');
+                    if (basicYearlyCard) {
+                        selectPlan(basicYearlyCard, 'basic-yearly');
+                    }
+                }
+            }, 50);
         }
 
         function selectPlan(planCard, planId) {
@@ -956,8 +1020,20 @@
             alert(message);
         }
 
-        // Initialize
-        updateBottomSection();
+        // Auto-select Basic Monthly plan on page load
+        function initializeDefaultSelection() {
+            const basicMonthlyCard = document.getElementById('basic-monthly-card');
+            if (basicMonthlyCard) {
+                selectPlan(basicMonthlyCard, 'basic-monthly');
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateBottomSection();
+            // Set a small delay to ensure DOM is fully loaded
+            setTimeout(initializeDefaultSelection, 100);
+        });
     </script>
 </body>
 
