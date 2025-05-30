@@ -54,6 +54,50 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+
+
+  <style>
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      #invoiceContent,
+      #invoiceContent * {
+        visibility: visible;
+      }
+
+      #invoiceContent {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+       padding: 10px;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .row {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+      }
+
+      .col-lg-6,
+      .col-md-6,
+      .col-sm-12 {
+        width: 50% !important;
+        max-width: 50% !important;
+        flex: 0 0 50% !important;
+      }
+
+      .text-end {
+        text-align: right !important;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -148,8 +192,9 @@
 
   <div class="container py-5">
     <div class="row">
-      <div class="col-md-9 mb-4" id="invoiceContent">
 
+      <div class="col-md-9 mb-4" id="invoiceContent">
+        <small>NOTE: All fields are editables</small>
         <div class="card shadow-sm p-4" id="invoiceContent">
           <input type="text" placeholder="Tax Invoice"
             class="form-control custom-placeholder text-secondary text-center mb-2 border-0 shadow-none p-0"
@@ -232,13 +277,27 @@
 
           <!-- add here -->
           <div class="table-responsive">
+
+
+            <div class="dropdown mb-3 no-print">
+              <button class="btn btn-primary dropdown-toggle btn-sm " type="button" id="gstDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Select GST Option
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="gstDropdown">
+                <li><a class="dropdown-item" onclick="selectGSTOption(true)">With GST</a></li>
+                <li><a class="dropdown-item" onclick="selectGSTOption(false)">Without GST</a></li>
+              </ul>
+            </div>
+
+
             <table id="itemTable" class="table table-bordered table-sm">
               <thead class="bg-primary text-white">
                 <tr>
                   <th>Item</th>
                   <th>Quantity</th>
                   <th>Price</th>
-                  <th>GST Rate (%)</th>
+                  <th class="gst-column">GST Rate (%)</th>
                   <th>Amount</th>
                 </tr>
               </thead>
@@ -259,7 +318,7 @@
                       class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small price"
                       placeholder="Price">
                   </td>
-                  <td>
+                  <td class="row-gst-data">
                     <input type="number"
                       class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small gst"
                       placeholder="GST %">
@@ -269,7 +328,7 @@
                       <input type="number"
                         class="form-control text-secondary bg-white rounded-0 border-0 shadow-none p-1 small amount"
                         placeholder="₹0" readonly>
-                      <i class="fas fa-minus-circle text-danger ms-2 remove-icon" style="cursor: pointer;"></i>
+                      <i class="fas fa-minus-circle text-danger ms-2 remove-icon no-print" style="cursor: pointer;"></i>
                     </div>
                   </td>
                 </tr>
@@ -277,7 +336,7 @@
             </table>
 
             <!-- Row Control Buttons -->
-            <div class="d-flex align-items-center gap-2 mt-3 p-2">
+            <div class="d-flex align-items-center gap-2 mt-3 p-2 no-print">
               <button id="decreaseBtn" class="btn btn-outline-danger btn-sm px-2 py-1">−</button>
               <span id="rowCount" class="px-2 py-1 border rounded bg-light small mx-2">1</span>
               <button id="increaseBtn" class="btn btn-outline-success btn-sm px-2 py-1">+</button>
@@ -287,11 +346,11 @@
 
           <hr>
           <div class="row mb-4">
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-6 col-sm-12">
               <!-- Notes -->
               <div id="notesSection" style="display: none;">
                 <label class="form-label">
-                  Notes <i class="fas fa-minus-circle text-danger" style="cursor: pointer;"
+                  Notes <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('notes')"></i>
                 </label>
                 <textarea class="form-control text-secondary rounded-0 border-0 shadow-none p-0"
@@ -301,7 +360,7 @@
               <!-- Terms -->
               <div id="termsSection" style="display: none;">
                 <label class="form-label">
-                  Terms & Conditions <i class="fas fa-minus-circle text-danger" style="cursor: pointer;"
+                  Terms & Conditions <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('terms')"></i>
                 </label>
                 <textarea class="form-control text-secondary rounded-0 border-0 shadow-none p-0"
@@ -311,7 +370,7 @@
               <!-- Bank -->
               <div id="bankSection" style="display: none;">
                 <label class="form-label">
-                  Bank Details <i class="fas fa-minus-circle text-danger" style="cursor: pointer;"
+                  Bank Details <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('bank')"></i>
                 </label>
                 <input type="text" class="form-control text-secondary rounded-0 border-0 shadow-none p-0"
@@ -323,14 +382,14 @@
               </div>
             </div>
 
-            <div class="col-md-6 text-end">
+            <div class="col-lg-6 col-md-6 col-sm-12">
               <!-- <p class="fw-bold">SubTotal: ₹ 0</p>
               <h5 class="fw-bold">Total Amount: ₹ 0</h5> -->
               <p class="fw-bold">Subtotal: ₹<span id="subTotal">0.00</span></p>
-              <h5 class="fw-bold">Total (after GST): ₹<span id="totalAmount">0.00</span></h5>
+              <h5 class="fw-bold">Total <span id="gstText">(after GST)</span>: ₹<span id="totalAmount">0.00</span></h5>
               <div id="signatureSection" style="display: none;">
                 <input type="file" id="signatureUpload" accept="image/*" style="display: none;">
-                <label for="signatureUpload" class="d-block mx-auto mt-4" style="cursor: pointer; width: 200px;">
+                <label for="signatureUpload" class="d-block mt-4" style="cursor: pointer; width: 200px;">
                   <div id="signatureBox"
                     class="border rounded bg-light d-flex flex-column justify-content-center align-items-center"
                     style="height: 70px;">
@@ -338,15 +397,15 @@
                     <p class="text-secondary mb-0">Upload Signature</p>
                   </div>
                 </label>
-                <p class="fw-bold text-center mt-2">
-                  Authorised Signatory <i class="fas fa-minus-circle text-danger" style="cursor: pointer;"
+                <p class="fw-bold  mt-2">
+                  Authorised Signatory <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('signature')"></i>
                 </p>
               </div>
             </div>
           </div>
-          <div class="d-flex flex-wrap justify-content-between mt-4">
-            <button id="addNotesBtn" class="btn btn-sm btn-outline-primary small mb-2">Add Notes</button>
+          <div class="d-flex flex-wrap justify-content-between mt-4 no-print">
+            <button id="addNotesBtn" class="btn btn-sm btn-outline-primary small mb-2 ">Add Notes</button>
             <button id="addTermsBtn" class="btn btn-sm btn-outline-primary small mb-2">Add Terms & Conditions</button>
             <button id="addBankBtn" class="btn btn-sm btn-outline-primary small mb-2">Add Your Bank Details</button>
             <button id="addSignatureBtn" class="btn btn-sm btn-outline-primary small mb-2">Add Signature Field</button>
@@ -357,7 +416,7 @@
       <div class="col-md-3 mb-4">
         <div class="card shadow-sm p-4">
 
-          <button class="btn btn-outline-primary w-100" onclick="printDiv()">Download/Print</button>
+          <button class="btn btn-outline-primary w-100" onclick="printInvoice()" id="printBtn">Download/Print</button>
           <div class="mt-4">
             <h6 class="fw-bold text-left">4 Simple Steps -</h6>
             <small>1. Add your logo & business details</small><br>
@@ -366,6 +425,44 @@
             <small>4. Download/Print PDF</small>
           </div>
         </div>
+
+        <div class="card p-2 mt-4 shadow-sm rounded">
+          <h3 class="text-center mb-4">💬 <br> Suggestion Box</h3>
+          <form name="sentMessage" id="contactForm" novalidate="novalidate">
+
+            <div class="control-group mb-3">
+              <input type="text" class="form-control form-control-sm p-2" id="name" placeholder="Your Name" required
+                data-validation-required-message="Please enter your name" />
+              <p class="help-block text-danger small"></p>
+            </div>
+
+            <div class="control-group mb-3">
+              <input type="tel" class="form-control form-control-sm p-2" id="phone" placeholder="+91 1234567890"
+                required data-validation-required-message="Please enter your phone number" />
+              <p class="help-block text-danger small"></p>
+            </div>
+
+            <div class="control-group mb-3">
+              <input type="email" class="form-control form-control-sm p-2" id="email" placeholder="Your Email" required
+                data-validation-required-message="Please enter your email" />
+              <p class="help-block text-danger small"></p>
+            </div>
+
+            <div class="control-group mb-3">
+              <textarea class="form-control form-control-sm p-2" rows="4" id="message" placeholder="Your Suggestion"
+                required data-validation-required-message="Please enter your message"></textarea>
+              <p class="help-block text-danger small"></p>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-sm btn-primary px-4 py-2" type="submit" id="sendMessageButton">
+                Send
+              </button>
+            </div>
+
+          </form>
+        </div>
+
 
 
       </div>
@@ -714,14 +811,14 @@
         <input type="number" class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small price"
                placeholder="Price">
       </td>
-      <td>
+      <td class="row-gst-data">
         <input type="number" class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small gst"
                placeholder="GST %">
       </td>
       <td>
         <div class="d-flex justify-content-between align-items-center">
           <input type="number" class="form-control bg-white text-secondary rounded-0 border-0 shadow-none p-1 small amount" placeholder="₹0" readonly>
-          <i class="fas fa-minus-circle text-danger ms-2 remove-icon" style="cursor: pointer;"></i>
+          <i class="fas fa-minus-circle text-danger ms-2 remove-icon no-print" style="cursor: pointer;"></i>
         </div>
       </td>
     `;
@@ -827,34 +924,46 @@
   </script>
 
 
+
   <script>
-    async function downloadPDF() {
-      const { jsPDF } = window.jspdf;
-      const content = document.getElementById("invoiceContent");
-
-      const canvas = await html2canvas(content, { scale: 2 });
-      const imgData = canvas.toDataURL("image/png");
-
-      const pdf = new jsPDF("p", "mm", "a4");
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-
-      pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-      pdf.save("invoice.pdf");
-    }
-
-    function printDiv() {
-      const printContents = document.getElementById("invoiceContent").innerHTML;
-      const originalContents = document.body.innerHTML;
-
-      document.body.innerHTML = printContents;
+    function printInvoice() {
       window.print();
-      document.body.innerHTML = originalContents;
-      location.reload(); // Optional: reload to restore JS functionality
     }
   </script>
 
+  <script>
+    // Default option: With GST
+    let gstEnabled = true;
+
+    function selectGSTOption(withGST) {
+      gstEnabled = withGST;
+
+      const gstColumns = document.querySelectorAll(".gst-column");
+      const gstText = document.getElementById("gstText");
+
+      // Show or hide GST column
+      gstColumns.forEach(col => {
+        col.style.display = withGST ? "" : "none";
+      });
+
+      // Remove or add (after GST) text
+      gstText.textContent = withGST ? "(after GST)" : "";
+
+      // If your table body rows also have GST data, you can hide/show them here as well
+      // Example:
+      document.querySelectorAll('.row-gst-data').forEach(td => {
+        td.style.display = withGST ? '' : 'none';
+      });
+    }
+
+    // Call once on load to set default
+    // window.onload = function () {
+    //   selectGSTOption(true); // With GST selected by default
+    // };
+  </script>
+
   <!-- JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
