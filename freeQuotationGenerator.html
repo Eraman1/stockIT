@@ -105,7 +105,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-3 bg-primary d-none d-lg-block">
-        <a href class="navbar-brand w-100 h-100 m-0 p-3 d-flex align-items-center justify-content-center">
+        <a href="/" class="navbar-brand w-100 h-100 m-0 p-3 d-flex align-items-center justify-content-center">
           <img src="/img/STOCK-It-Logo.webp" alt="stock it logo" width="240" />
         </a>
       </div>
@@ -140,7 +140,7 @@
           </div>
         </div>
         <nav class="navbar navbar-expand-lg  bg-white navbar-light p-0">
-          <a href class="navbar-brand d-block d-lg-none">
+          <a href="/" class="navbar-brand d-block d-lg-none">
             <!-- <h1 class="m-0 display-4 text-primary">Stock It</h1> -->
             <img src="/img/STOCK-white.webp" width="160" alt="Stock it Logo" />
           </a>
@@ -149,21 +149,25 @@
           </button>
           <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
-              <a href="index.html" class="nav-item nav-link ">Home</a>
-              <a href="about.html" class="nav-item nav-link">About</a>
-              <a href="pricing.html" class="nav-item nav-link">Pricing</a>
               <a data-toggle="modal" data-target="#tryMobileApp" class="nav-item nav-link"><i
-                  class="fa-solid fa-mobile-screen"></i> Mobile</a>
+                  class="fa-solid fa-mobile-screen"></i>
+                Mobile</a>
               <a href="desktop.html" class="nav-item nav-link"><i class="fa-solid fa-laptop"></i>
                 Desktop</a>
+              <a href="about.html" class="nav-item nav-link">About</a>
+              <a href="pricing.html" class="nav-item nav-link">Pricing</a>
+
               <!-- <a href="project.html" class="nav-item nav-link">Project</a> -->
-              <!-- <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                    <div class="dropdown-menu rounded-0 m-0">
-                                        <a href="blog.html" class="dropdown-item">Latest Blog</a>
-                                        <a href="single.html" class="dropdown-item">Blog Detail</a>
-                                    </div>
-                                </div>-->
+              <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown">Free Tools</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                  <a href="freeInvoiceGenerator.html" class="dropdown-item">Free Invoice Generator</a>
+                  <a href="freeQuotationGenerator.html" class="dropdown-item active">Free Quotation Generator</a>
+                  <a href="freeProformaInvoiceGenerator.html" class="dropdown-item">Free Proforma Invoice Generator</a>
+                  <a href="freeInventoryReportGenerator.html" class="dropdown-item">Free Inventory Report Generator</a>
+                  <a href="freePurchaseOrderGenerator.html" class="dropdown-item">Free Purchase Order Generator</a>
+                </div>
+              </div>
               <a href="contact.html" class="nav-item nav-link ">Contact</a>
             </div>
             <a href="https://web.stock-it.in/" class="btn btn-primary mr-3 d-none d-lg-block">Login</a>
@@ -179,7 +183,7 @@
     <div class="container text-center py-5">
 
       <h1 class="display-4 mb-4 mb-md-0 text-secondary text-uppercase">
-        Free Invoice Generator for Small Business
+        Free Quotation Generator for Small Business
       </h1>
       <p class="text-white">Use our free invoice maker built for small businesses in India to create professional GST
         invoice for your
@@ -196,14 +200,14 @@
       <div class="col-md-9 mb-4" id="invoiceContent">
         <small>NOTE: All fields are editables</small>
         <div class="card shadow-sm p-4" id="invoiceContent">
-          <input type="text" placeholder="Tax Invoice"
+          <input type="text" placeholder="Inventory List"
             class="form-control custom-placeholder text-secondary text-center mb-2 border-0 shadow-none p-0"
             style="font-size: 2rem; font-weight: 500;">
 
           <div class="d-flex justify-content-between">
             <div class="mb-2">
               <div class="d-flex align-items-center">
-                <label class="form-label mb-0 me-2" style="font-size: 0.9rem;">Invoice No:</label>
+                <label class="form-label mb-0 me-2" style="font-size: 0.9rem;">Quotation No:</label>
                 <input type="text" class="form-control border-0 rounded-0 shadow-none p-0" placeholder="01"
                   style="margin-left: 10px; font-size: 0.9rem; width: 100px;">
               </div>
@@ -266,7 +270,7 @@
           </div>
 
           <hr class="my-4">
-          <h5 class="fw-bold">BILL TO</h5>
+          <h5 class="fw-bold">QUOTATION TO</h5>
           <!-- Customer Name -->
           <div class="print-check">
             <input type="text" placeholder="Customer Name"
@@ -369,7 +373,7 @@
           <div class="row mb-4">
             <div class="col-lg-6 col-md-6 col-sm-12">
               <!-- Notes -->
-              <div id="notesSection" style="display: none;">
+              <div id="notesSection" style="display: none;" class="print-check">
                 <label class="form-label">
                   Notes <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('notes')"></i>
@@ -379,7 +383,7 @@
               </div>
 
               <!-- Terms -->
-              <div id="termsSection" style="display: none;">
+              <div id="termsSection" style="display: none;" class="print-check">
                 <label class="form-label">
                   Terms & Conditions <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('terms')"></i>
@@ -389,7 +393,7 @@
               </div>
 
               <!-- Bank -->
-              <div id="bankSection" style="display: none;">
+              <div id="bankSection" style="display: none;" class="print-check">
                 <label class="form-label">
                   Bank Details <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('bank')"></i>
@@ -400,6 +404,10 @@
                   style="font-size: 0.9rem;" placeholder="Account Number">
                 <input type="text" class="form-control text-secondary rounded-0 border-0 shadow-none p-0"
                   style="font-size: 0.9rem;" placeholder="Bank Name">
+                <input type="text" class="form-control text-secondary rounded-0 border-0 shadow-none p-0"
+                  style="font-size: 0.9rem;" placeholder="IFSC Code">
+                <input type="text" class="form-control text-secondary rounded-0 border-0 shadow-none p-0"
+                  style="font-size: 0.9rem;" placeholder="UPI ID">
               </div>
             </div>
 
@@ -875,6 +883,8 @@
       const price = parseFloat(row.querySelector('.price')?.value) || 0;
       const gst = parseFloat(row.querySelector('.gst')?.value) || 0;
 
+
+
       const amount = qty * price * (1 + gst / 100);
       row.querySelector('.amount').value = amount.toFixed(2);
 
@@ -980,6 +990,8 @@
       // Example:
       document.querySelectorAll('.row-gst-data').forEach(td => {
         td.style.display = withGST ? '' : 'none';
+        const input = td.querySelector('input');
+        if (input) input.value = ' '; // ✅ Clear GST input
       });
     }
 
