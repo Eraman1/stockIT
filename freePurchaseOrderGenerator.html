@@ -374,7 +374,7 @@
           <div class="row mb-4">
             <div class="col-lg-6 col-md-6 col-sm-12">
               <!-- Notes -->
-              <div id="notesSection" style="display: none;" class="print-check">
+              <div id="notesSection" style="display: none;">
                 <label class="form-label">
                   Notes <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('notes')"></i>
@@ -384,7 +384,7 @@
               </div>
 
               <!-- Terms -->
-              <div id="termsSection" style="display: none;" class="print-check">
+              <div id="termsSection" style="display: none;">
                 <label class="form-label">
                   Terms & Conditions <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('terms')"></i>
@@ -394,7 +394,7 @@
               </div>
 
               <!-- Bank -->
-              <div id="bankSection" style="display: none;" class="print-check">
+              <div id="bankSection" style="display: none;">
                 <label class="form-label">
                   Bank Details <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('bank')"></i>
@@ -969,6 +969,9 @@
     }
   </script>
 
+
+
+
   <script>
     // Default option: With GST
     let gstEnabled = true;
@@ -979,22 +982,34 @@
       const gstColumns = document.querySelectorAll(".gst-column");
       const gstText = document.getElementById("gstText");
 
-      // Show or hide GST column
+      // Show or hide GST column in table head
       gstColumns.forEach(col => {
         col.style.display = withGST ? "" : "none";
       });
 
-      // Remove or add (after GST) text
       gstText.textContent = withGST ? "(after GST)" : "";
 
-      // If your table body rows also have GST data, you can hide/show them here as well
-      // Example:
-      document.querySelectorAll('.row-gst-data').forEach(td => {
-        td.style.display = withGST ? '' : 'none';
-        const input = td.querySelector('input');
-        if (input) input.value = ' '; // ✅ Clear GST input
+      // Update each row
+      document.querySelectorAll('#tableBody tr').forEach(row => {
+        const gstTd = row.querySelector('.row-gst-data');
+        const gstInput = gstTd.querySelector('input');
+
+        // Hide/show GST cell
+        gstTd.style.display = withGST ? '' : 'none';
+
+        // Set value & force recalculation
+        if (gstInput) {
+          gstInput.value = withGST ? (gstInput.value || '0') : '0';
+        }
+
+        // 🔁 Recalculate row amount after GST toggle
+        calculateRowAmount(row);
       });
+
+      // Recalculate all totals
+      calculateAllTotals();
     }
+
 
     // Call once on load to set default
     window.onload = function () {
