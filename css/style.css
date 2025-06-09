@@ -10484,6 +10484,13 @@ h6,
    max-width: 100%;
   height: auto;
 }
+.bg-freeToolsBanner {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../img/banner/freeToolsBanner.webp), no-repeat center center;
+  background-size:cover;
+   max-width: 100%;
+  height: auto;
+}
 
 .owl-carousel .owl-nav {
   position: absolute;

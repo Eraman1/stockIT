@@ -164,12 +164,12 @@
                   <a href="freeInvoiceGenerator.html" class="dropdown-item ">Free Invoice Generator</a>
                   <a href="freeQuotationGenerator.html" class="dropdown-item">Free Quotation Generator</a>
                   <a href="freeProformaInvoiceGenerator.html" class="dropdown-item">Free Proforma Invoice Generator</a>
-                  <a href="freeInventoryReportGenerator.html" class="dropdown-item active">Free Inventory Report
+                  <a href="freeInventoryReportGenerator.html" class="dropdown-item ">Free Inventory Report
                     Generator</a>
                   <a href="freePurchaseOrderGenerator.html" class="dropdown-item">Free Purchase Order Generator</a>
                   <a href="freeItemListGenerator.html" class="dropdown-item">Free Item List Generator</a>
                   <a href="freeDeliveyChallanGenerator.html" class="dropdown-item">Free Delivery Challan Generator</a>
-                  <a href="freeReciptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
+                  <a href="freeReciptGenerator.html" class="dropdown-item active">Free Receipt Generator</a>
                 </div>
               </div>
               <a href="contact.html" class="nav-item nav-link ">Contact</a>
@@ -183,11 +183,11 @@
   <!-- Header End -->
 
   <!-- Page Header Start -->
-  <div class="container-fluid bg-contactBanner py-3 ">
+  <div class="container-fluid bg-freeToolsBanner py-3 ">
     <div class="container text-center py-5">
 
       <h1 class="display-4 mb-4 mb-md-0 text-secondary text-uppercase">
-        Free Inventory Report Generator for Small Business
+        Free Receipt Generator for Small Business
       </h1>
       <p class="text-white">Use our free invoice maker built for small businesses in India to create professional GST
         invoice for your
@@ -204,14 +204,14 @@
       <div class="col-md-9 mb-4" id="invoiceContent">
         <small>NOTE: All fields are editables</small>
         <div class="card shadow-sm p-4" id="invoiceContent">
-          <input type="text" placeholder="Inventory List"
+          <input type="text" placeholder="Receipt"
             class="form-control custom-placeholder text-secondary text-center mb-2 border-0 shadow-none p-0"
             style="font-size: 2rem; font-weight: 500;">
 
-          <!-- <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between">
             <div class="mb-2">
               <div class="d-flex align-items-center">
-                <label class="form-label mb-0 me-2" style="font-size: 0.9rem;">Invoice No:</label>
+                <label class="form-label mb-0 me-2" style="font-size: 0.9rem;">Receipt No:</label>
                 <input type="text" class="form-control border-0 rounded-0 shadow-none p-0" placeholder="01"
                   style="margin-left: 10px; font-size: 0.9rem; width: 100px;">
               </div>
@@ -221,7 +221,7 @@
               <input type="text" id="date" class="form-control border-0 rounded-0 shadow-none p-0 text-center"
                 placeholder="Pick a date" style="font-size: 0.9rem;">
             </div>
-          </div> -->
+          </div>
           <div class="d-flex justify-content-between">
             <div class="">
               <div class="print-check">
@@ -251,7 +251,7 @@
 
               <!--GSTIN | PAN -->
               <div class="print-check">
-                <input type="text" placeholder="GSTIN | VAT No."
+                <input type="text" placeholder="GSTIN | PAN"
                   class="form-control custom-placeholder text-secondary rounded-0  border-0 shadow-none p-0"
                   style="font-size: 0.9rem;">
               </div>
@@ -273,42 +273,42 @@
 
           </div>
 
-          <!-- <hr class="my-4">
-          <h5 class="fw-bold">BILL TO</h5>
-          <!-- Customer Name --
+          <hr class="my-4">
+          <h5 class="fw-bold">Receipt to</h5>
+          <!-- Customer Name -->
           <div class="print-check">
             <input type="text" placeholder="Customer Name"
               class="form-control custom-placeholder text-secondary rounded-0 border-0 shadow-none p-0"
               style="font-size: 0.9rem;">
           </div>
 
-          <!-- Customer Address | Pincode --
+          <!-- Customer Address | Pincode -->
           <div class="print-check">
             <input type="text" placeholder="Customer Address"
               class="form-control custom-placeholder text-secondary rounded-0 border-0 shadow-none p-0"
               style="font-size: 0.9rem;">
           </div>
 
-          <!-- Phone | Email --
+          <!-- Phone | Email -->
           <div class="print-check">
             <input type="text" placeholder="Phone | Email"
               class="form-control custom-placeholder text-secondary rounded-0 border-0 shadow-none p-0"
               style="font-size: 0.9rem;">
           </div>
 
-          <!-- PAN Number | GSTIN | Place of Supply --
+          <!-- PAN Number | GSTIN | Place of Supply -->
           <div class="print-check">
             <input type="text" placeholder="PAN Number | GSTIN | Place of Supply"
               class="form-control custom-placeholder text-secondary rounded-0 border-0 shadow-none p-0"
               style="font-size: 0.9rem;">
-          </div> -->
+          </div>
 
 
           <!-- add here -->
           <div class="table-responsive">
 
 
-            <!-- <div class="dropdown mb-3 no-print">
+            <div class="dropdown mb-3 no-print">
               <button class="btn btn-primary dropdown-toggle btn-sm " type="button" id="gstDropdown"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Select GST Option
@@ -317,17 +317,17 @@
                 <li><a class="dropdown-item" onclick="selectGSTOption(true)">With GST</a></li>
                 <li><a class="dropdown-item" onclick="selectGSTOption(false)">Without GST</a></li>
               </ul>
-            </div> -->
+            </div>
 
 
             <table id="itemTable" class="table table-bordered table-sm">
               <thead class="bg-primary text-white">
                 <tr>
                   <th>Item</th>
-                  <th>Description</th>
-                  <th>Opening Stock</th>
-                  <th>Stock In</th>
-                  <th>Closing Stock</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th class="gst-column">GST Rate (%)</th>
+                  <th>Amount</th>
                 </tr>
               </thead>
               <tbody id="tableBody">
@@ -338,23 +338,25 @@
                       placeholder="Item" maxlength="100">
                   </td>
                   <td>
-                    <input type="text" class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small qty"
-                      placeholder="description">
+                    <input type="number"
+                      class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small qty"
+                      placeholder="Qty">
                   </td>
                   <td>
-                    <input type="text"
+                    <input type="number"
                       class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small price"
-                      placeholder="Opening Stock" value="0">
+                      placeholder="Price">
                   </td>
                   <td class="row-gst-data">
-                    <input type="text" class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small gst"
-                      placeholder="Stock In" value="0">
+                    <input type="number"
+                      class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small gst"
+                      placeholder="GST %">
                   </td>
                   <td>
                     <div class="d-flex justify-content-between align-items-center">
-                      <input type="text"
-                        class="form-control text-secondary bg-white rounded-0 border-0 shadow-none p-1 small"
-                        placeholder="Closing Stock" value="0">
+                      <input type="number"
+                        class="form-control text-secondary bg-white rounded-0 border-0 shadow-none p-1 small amount"
+                        placeholder="₹0" readonly>
                       <i class="fas fa-minus-circle text-danger ms-2 remove-icon no-print" style="cursor: pointer;"></i>
                     </div>
                   </td>
@@ -371,11 +373,11 @@
           </div>
 
 
-          <!-- <hr> -->
-          <!-- <div class="row mb-4">
+          <hr>
+          <div class="row mb-4">
             <div class="col-lg-6 col-md-6 col-sm-12">
-              <!-- Notes --
-              <div id="notesSection" style="display: none;" class="print-check">
+              <!-- Notes -->
+              <div id="notesSection" style="display: none;">
                 <label class="form-label">
                   Notes <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('notes')"></i>
@@ -384,8 +386,8 @@
                   style="font-size: 0.9rem;" rows="3" placeholder="Add notes here..."></textarea>
               </div>
 
-              <!-- Terms --
-              <div id="termsSection" style="display: none;" class="print-check">
+              <!-- Terms -->
+              <div id="termsSection" style="display: none;">
                 <label class="form-label">
                   Terms & Conditions <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('terms')"></i>
@@ -394,8 +396,8 @@
                   style="font-size: 0.9rem;" rows="3" placeholder="Enter terms..."></textarea>
               </div>
 
-              <!-- Bank --
-              <div id="bankSection" style="display: none;" class="print-check">
+              <!-- Bank -->
+              <div id="bankSection" style="display: none;">
                 <label class="form-label">
                   Bank Details <i class="fas fa-minus-circle text-danger no-print" style="cursor: pointer;"
                     onclick="toggleSection('bank')"></i>
@@ -415,7 +417,7 @@
 
             <div class="col-lg-6 col-md-6 col-sm-12">
               <!-- <p class="fw-bold">SubTotal: ₹ 0</p>
-              <h5 class="fw-bold">Total Amount: ₹ 0</h5> -
+              <h5 class="fw-bold">Total Amount: ₹ 0</h5> -->
               <p class="fw-bold">Subtotal: ₹<span id="subTotal">0.00</span></p>
               <h5 class="fw-bold">Total <span id="gstText">(after GST)</span>: ₹<span id="totalAmount">0.00</span></h5>
               <div id="signatureSection" style="display: none;">
@@ -441,7 +443,7 @@
             <button id="addBankBtn" class="btn btn-sm btn-outline-primary small mb-2">Add Your Bank Details</button>
             <button id="addSignatureBtn" class="btn btn-sm btn-outline-primary small mb-2">Add Signature Field</button>
 
-          </div> -->
+          </div>
         </div>
       </div>
       <div class="col-md-3 mb-4">
@@ -830,32 +832,28 @@
     function createRow() {
       const row = document.createElement('tr');
       row.innerHTML = `
-       <td style="width: 250px;">
-                    <input type="text"
-                      class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small text-truncate"
-                      placeholder="Item" maxlength="100">
-                  </td>
-                  <td>
-                    <input type="text" class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small qty"
-                      placeholder="description">
-                  </td>
-                  <td>
-                    <input type="text"
-                      class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small price"
-                      placeholder="Opening Stock" value="0">
-                  </td>
-                  <td class="row-gst-data">
-                    <input type="text" class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small gst"
-                      placeholder="Stock In" value="0">
-                  </td>
-                  <td>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <input type="text"
-                        class="form-control text-secondary bg-white rounded-0 border-0 shadow-none p-1 small"
-                        placeholder="Closing Stock" value="0">
-                      <i class="fas fa-minus-circle text-danger ms-2 remove-icon no-print" style="cursor: pointer;"></i>
-                    </div>
-                  </td>
+      <td style="width: 250px;">
+        <input type="text" class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small text-truncate"
+               placeholder="Item" maxlength="100">
+      </td>
+      <td>
+        <input type="number" class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small qty"
+               placeholder="Qty">
+      </td>
+      <td>
+        <input type="number" class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small price"
+               placeholder="Price">
+      </td>
+      <td class="row-gst-data">
+        <input type="number" class="form-control text-secondary rounded-0 border-0 shadow-none p-1 small gst"
+               placeholder="GST %">
+      </td>
+      <td>
+        <div class="d-flex justify-content-between align-items-center">
+          <input type="number" class="form-control bg-white text-secondary rounded-0 border-0 shadow-none p-1 small amount" placeholder="₹0" readonly>
+          <i class="fas fa-minus-circle text-danger ms-2 remove-icon no-print" style="cursor: pointer;"></i>
+        </div>
+      </td>
     `;
 
       // Attach event listeners after creating the row
@@ -984,22 +982,34 @@
       const gstColumns = document.querySelectorAll(".gst-column");
       const gstText = document.getElementById("gstText");
 
-      // Show or hide GST column
+      // Show or hide GST column in table head
       gstColumns.forEach(col => {
         col.style.display = withGST ? "" : "none";
       });
 
-      // Remove or add (after GST) text
       gstText.textContent = withGST ? "(after GST)" : "";
 
-      // If your table body rows also have GST data, you can hide/show them here as well
-      // Example:
-      document.querySelectorAll('.row-gst-data').forEach(td => {
-        td.style.display = withGST ? '' : 'none';
-        const input = td.querySelector('input');
-        if (input) input.value = ' '; // ✅ Clear GST input
+      // Update each row
+      document.querySelectorAll('#tableBody tr').forEach(row => {
+        const gstTd = row.querySelector('.row-gst-data');
+        const gstInput = gstTd.querySelector('input');
+
+        // Hide/show GST cell
+        gstTd.style.display = withGST ? '' : 'none';
+
+        // Set value & force recalculation
+        if (gstInput) {
+          gstInput.value = withGST ? (gstInput.value || '0') : '0';
+        }
+
+        // 🔁 Recalculate row amount after GST toggle
+        calculateRowAmount(row);
       });
+
+      // Recalculate all totals
+      calculateAllTotals();
     }
+
 
     // Call once on load to set default
     window.onload = function () {
