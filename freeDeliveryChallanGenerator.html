@@ -168,8 +168,9 @@
                     Generator</a>
                   <a href="freePurchaseOrderGenerator.html" class="dropdown-item">Free Purchase Order Generator</a>
                   <a href="freeItemListGenerator.html" class="dropdown-item">Free Item List Generator</a>
-                  <a href="freeDeliveyChallanGenerator.html" class="dropdown-item active">Free Delivery Challan Generator</a>
-                  <a href="freeReciptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
+                  <a href="freeDeliveyChallanGenerator.html" class="dropdown-item active">Free Delivery Challan
+                    Generator</a>
+                  <a href="freeReceiptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
                 </div>
               </div>
               <a href="contact.html" class="nav-item nav-link ">Contact</a>
@@ -591,8 +592,8 @@
 
   <!-- faq  -->
   <div class="container py-5">
-    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-    <div id="faqAccordion" role="tablist" aria-multiselectable="true"></div>
+    <h2 class="text-center mb-4">Free Delivery Challan Generator - FAQs</h2>
+    <div id="challanFaqAccordion" role="tablist" aria-multiselectable="true"></div>
   </div>
   <!-- faq end -->
   <!-- Call to Action -->
@@ -1064,7 +1065,55 @@
   </script>
 
 
+  <script>
+    const challanFaqs = [
+      {
+        question: "What is a delivery challan?",
+        answer: `A delivery challan is a document used to record the transportation of goods from one location to another. It is typically used when goods are transported without a sale taking place.`
+      },
+      {
+        question: "Is the Delivery Challan Generator really free?",
+        answer: `Yes! Our Free Delivery Challan Generator is completely free to use. You can create, download, and print delivery challans without any cost or subscription.`
+      },
+      {
+        question: "Do I need to register to use the generator?",
+        answer: `No registration is required. You can generate and download your delivery challans instantly, without creating an account.`
+      },
+      {
+        question: "Can I customize the delivery challan?",
+        answer: `Absolutely! You can add your business name, address, logo, product details, and more. The format is fully customizable to suit your business needs.`
+      },
+      {
+        question: "Is the delivery challan legally valid?",
+        answer: `Yes, delivery challans generated through our tool are legally valid in India and comply with standard transport documentation practices.`
+      }
+    ];
 
+    function generateChallanFAQ() {
+      const faqContainer = document.getElementById("challanFaqAccordion");
+      faqContainer.innerHTML = challanFaqs
+        .map(
+          (faq, index) => `
+        <div class="card">
+          <div class="card-header faq-header collapsed" role="tab" id="challanHeading${index}" 
+              data-toggle="collapse" href="#challanCollapse${index}" aria-expanded="false" 
+              aria-controls="challanCollapse${index}">
+            <h6 class="mb-0 d-flex justify-content-between align-items-center text-secondary">
+              ${faq.question}
+              <i class="fas fa-chevron-down"></i>
+            </h6>
+          </div>
+          <div id="challanCollapse${index}" class="collapse ${index === 0 ? "show" : ""}" 
+              role="tabpanel" aria-labelledby="challanHeading${index}" data-parent="#challanFaqAccordion">
+            <div class="card-body">${faq.answer}</div>
+          </div>
+        </div>`
+        )
+        .join("");
+    }
+
+    generateChallanFAQ();
+  </script>
 
   <!-- JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

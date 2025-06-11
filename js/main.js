@@ -392,6 +392,10 @@ function generateFAQ() {
 
 generateFAQ();
 
+// free tools
+
+
+
 
 
 function toggleBilling(option) {

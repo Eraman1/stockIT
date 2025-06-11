@@ -169,7 +169,7 @@
                   <a href="freePurchaseOrderGenerator.html" class="dropdown-item">Free Purchase Order Generator</a>
                   <a href="freeItemListGenerator.html" class="dropdown-item">Free Item List Generator</a>
                   <a href="freeDeliveyChallanGenerator.html" class="dropdown-item">Free Delivery Challan Generator</a>
-                  <a href="freeReciptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
+                  <a href="freeReceiptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
                 </div>
               </div>
               <a href="contact.html" class="nav-item nav-link ">Contact</a>
@@ -589,8 +589,8 @@
 
   <!-- faq  -->
   <div class="container py-5">
-    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-    <div id="faqAccordion" role="tablist" aria-multiselectable="true"></div>
+    <h2 class="text-center mb-4">Free Inventory Report Generator - FAQs</h2>
+    <div id="inventoryFaqAccordion" role="tablist" aria-multiselectable="true"></div>
   </div>
   <!-- faq end -->
   <!-- Call to Action -->
@@ -1053,7 +1053,55 @@
     });
   </script>
 
+  <script>
+    const inventoryFaqs = [
+      {
+        question: "What is an inventory report?",
+        answer: `An inventory report provides a summary of the quantity, value, and status of items in stock. It helps businesses track inventory levels, reduce waste, and make informed purchasing decisions.`
+      },
+      {
+        question: "Is the Inventory Report Generator free to use?",
+        answer: `Yes! Our Free Inventory Report Generator is 100% free. You can generate and download inventory reports without any registration or payment.`
+      },
+      {
+        question: "Do I need to create an account to use the generator?",
+        answer: `No account is required. You can instantly use the tool to generate and export inventory reports.`
+      },
+      {
+        question: "Can I customize my inventory reports?",
+        answer: `Yes, you can customize your inventory report by adding your business name, categories, quantities, and other important data. The tool is flexible and easy to use.`
+      },
+      {
+        question: "Is my inventory data saved?",
+        answer: `No, your data is not stored on our servers. Everything happens on your device to ensure privacy and security.`
+      }
+    ];
 
+    function generateInventoryFAQ() {
+      const faqContainer = document.getElementById("inventoryFaqAccordion");
+      faqContainer.innerHTML = inventoryFaqs
+        .map(
+          (faq, index) => `
+        <div class="card">
+          <div class="card-header faq-header collapsed" role="tab" id="inventoryHeading${index}" 
+              data-toggle="collapse" href="#inventoryCollapse${index}" aria-expanded="false" 
+              aria-controls="inventoryCollapse${index}">
+            <h6 class="mb-0 d-flex justify-content-between align-items-center text-secondary">
+              ${faq.question}
+              <i class="fas fa-chevron-down"></i>
+            </h6>
+          </div>
+          <div id="inventoryCollapse${index}" class="collapse ${index === 0 ? "show" : ""}" 
+              role="tabpanel" aria-labelledby="inventoryHeading${index}" data-parent="#inventoryFaqAccordion">
+            <div class="card-body">${faq.answer}</div>
+          </div>
+        </div>`
+        )
+        .join("");
+    }
+
+    generateInventoryFAQ();
+  </script>
 
 
   <!-- JavaScript Libraries -->

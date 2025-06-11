@@ -97,6 +97,8 @@
       }
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 
 </head>
 
@@ -169,7 +171,7 @@
                   <a href="freePurchaseOrderGenerator.html" class="dropdown-item">Free Purchase Order Generator</a>
                   <a href="freeItemListGenerator.html" class="dropdown-item">Free Item List Generator</a>
                   <a href="freeDeliveyChallanGenerator.html" class="dropdown-item">Free Delivery Challan Generator</a>
-                  <a href="freeReciptGenerator.html" class="dropdown-item active">Free Receipt Generator</a>
+                  <a href="freeReceiptGenerator.html" class="dropdown-item active">Free Receipt Generator</a>
                 </div>
               </div>
               <a href="contact.html" class="nav-item nav-link ">Contact</a>
@@ -203,7 +205,7 @@
 
       <div class="col-md-9 mb-4" id="invoiceContent">
         <small>NOTE: All fields are editables</small>
-        <div class="card shadow-sm p-4" id="invoiceContent">
+        <div class="card shadow-sm p-4 invoice-download" id="invoiceContent">
           <input type="text" placeholder="Receipt"
             class="form-control custom-placeholder text-secondary text-center mb-2 border-0 shadow-none p-0"
             style="font-size: 2rem; font-weight: 500;">
@@ -450,6 +452,7 @@
         <div class="card shadow-sm p-4">
 
           <button class="btn btn-outline-primary w-100" onclick="printInvoice()" id="printBtn">Download/Print</button>
+          <button class="btn btn-outline-primary w-100" id="downloadPdf">Download</button>
           <div class="mt-4">
             <h6 class="fw-bold text-left">4 Simple Steps -</h6>
             <small>1. Add your logo & business details</small><br>
@@ -591,8 +594,8 @@
 
   <!-- faq  -->
   <div class="container py-5">
-    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-    <div id="faqAccordion" role="tablist" aria-multiselectable="true"></div>
+    <h2 class="text-center mb-4">Free Receipt Generator - FAQs</h2>
+    <div id="receiptFaqAccordion" role="tablist" aria-multiselectable="true"></div>
   </div>
   <!-- faq end -->
   <!-- Call to Action -->
@@ -1063,6 +1066,93 @@
     });
   </script>
 
+  <script>
+    const pdfOptions = {
+      margin: 10,
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    document.querySelector('#downloadPdf').addEventListener('click', () => {
+      const visibleInvoice = document.querySelector('.invoice-download');
+
+      if (!visibleInvoice) {
+        alert("No invoice selected!");
+        return;
+      }
+      const options = { ...pdfOptions, filename: visibleInvoice.id + '.pdf' };
+      html2pdf().from(visibleInvoice).set(options).save();
+    });
+
+    // function downloadInvoice() {
+    //   const element = document.getElementById('invoice');
+
+    //   // Optional: temporarily hide elements before generating PDF
+    //   document.querySelectorAll('.no-print').forEach(el => el.style.display = 'none');
+
+    //   html2pdf().set({
+    //     margin: 0,
+    //     filename: 'invoice.pdf',
+    //     image: { type: 'jpeg', quality: 0.98 },
+    //     html2canvas: { scale: 2, useCORS: true },  // High-res
+    //     jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    //   }).from(element).save().then(() => {
+    //     // Restore display of no-print elements after download
+    //     document.querySelectorAll('.no-print').forEach(el => el.style.display = 'block');
+    //   });
+    // }
+  </script>
+
+  <script>
+    const receiptFaqs = [
+      {
+        question: "What is a receipt?",
+        answer: `A receipt is a written acknowledgment that a specified payment has been received. It includes details like the amount, date, payment method, and purpose of the transaction.`
+      },
+      {
+        question: "Is the Receipt Generator free to use?",
+        answer: `Yes! Our Free Receipt Generator is completely free. You can generate, download, and print receipts instantly without any charges.`
+      },
+      {
+        question: "Do I need to register or log in?",
+        answer: `No registration is required. You can use the tool directly to create receipts without logging in.`
+      },
+      {
+        question: "Can I include GST and other charges on the receipt?",
+        answer: `Yes, you can add GST and other details such as payment mode, customer name, and remarks for a complete professional receipt.`
+      },
+      {
+        question: "Is the receipt legally valid?",
+        answer: `Yes. A receipt acts as proof of payment received. It is valid for both personal and business transactions as a record of the amount paid.`
+      }
+    ];
+
+    function generateReceiptFAQ() {
+      const faqContainer = document.getElementById("receiptFaqAccordion");
+      faqContainer.innerHTML = receiptFaqs
+        .map(
+          (faq, index) => `
+        <div class="card">
+          <div class="card-header faq-header collapsed" role="tab" id="receiptHeading${index}" 
+              data-toggle="collapse" href="#receiptCollapse${index}" aria-expanded="false" 
+              aria-controls="receiptCollapse${index}">
+            <h6 class="mb-0 d-flex justify-content-between align-items-center text-secondary">
+              ${faq.question}
+              <i class="fas fa-chevron-down"></i>
+            </h6>
+          </div>
+          <div id="receiptCollapse${index}" class="collapse ${index === 0 ? "show" : ""}" 
+              role="tabpanel" aria-labelledby="receiptHeading${index}" data-parent="#receiptFaqAccordion">
+            <div class="card-body">${faq.answer}</div>
+          </div>
+        </div>`
+        )
+        .join("");
+    }
+
+    generateReceiptFAQ();
+  </script>
 
 
 

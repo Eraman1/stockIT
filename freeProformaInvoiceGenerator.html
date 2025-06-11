@@ -170,7 +170,7 @@
                   <a href="freePurchaseOrderGenerator.html" class="dropdown-item">Free Purchase Order Generator</a>
                   <a href="freeItemListGenerator.html" class="dropdown-item">Free Item List Generator</a>
                   <a href="freeDeliveyChallanGenerator.html" class="dropdown-item">Free Delivery Challan Generator</a>
-                  <a href="freeReciptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
+                  <a href="freeReceiptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
                 </div>
               </div>
               <a href="contact.html" class="nav-item nav-link ">Contact</a>
@@ -592,8 +592,8 @@
 
   <!-- faq  -->
   <div class="container py-5">
-    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-    <div id="faqAccordion" role="tablist" aria-multiselectable="true"></div>
+    <h2 class="text-center mb-4">Free Proforma Invoice Generator - FAQs</h2>
+    <div id="proformaFaqAccordion" role="tablist" aria-multiselectable="true"></div>
   </div>
   <!-- faq end -->
   <!-- Call to Action -->
@@ -1065,7 +1065,55 @@
   </script>
 
 
+  <script>
+    const proformaFaqs = [
+      {
+        question: "What is a proforma invoice?",
+        answer: `A proforma invoice is a preliminary bill of sale sent to buyers in advance of a shipment or delivery of goods. It typically includes item descriptions, quantities, prices, and terms.`
+      },
+      {
+        question: "Is the Proforma Invoice Generator free?",
+        answer: `Yes! Our Free Proforma Invoice Generator is completely free. You can create, preview, and download professional proforma invoices without any cost.`
+      },
+      {
+        question: "Do I need to register to use the tool?",
+        answer: `No registration is required. You can use the tool instantly to generate proforma invoices.`
+      },
+      {
+        question: "Can I include GST and other charges?",
+        answer: `Yes. The generator supports GST, shipping charges, discounts, and other custom fields so you can create complete and accurate proforma invoices.`
+      },
+      {
+        question: "Is the proforma invoice legally valid?",
+        answer: `A proforma invoice is not a legal document for claiming payment, but it is useful for providing estimates and confirming the intention to purchase. It helps businesses communicate pricing and terms clearly.`
+      }
+    ];
 
+    function generateProformaFAQ() {
+      const faqContainer = document.getElementById("proformaFaqAccordion");
+      faqContainer.innerHTML = proformaFaqs
+        .map(
+          (faq, index) => `
+        <div class="card">
+          <div class="card-header faq-header collapsed" role="tab" id="proformaHeading${index}" 
+              data-toggle="collapse" href="#proformaCollapse${index}" aria-expanded="false" 
+              aria-controls="proformaCollapse${index}">
+            <h6 class="mb-0 d-flex justify-content-between align-items-center text-secondary">
+              ${faq.question}
+              <i class="fas fa-chevron-down"></i>
+            </h6>
+          </div>
+          <div id="proformaCollapse${index}" class="collapse ${index === 0 ? "show" : ""}" 
+              role="tabpanel" aria-labelledby="proformaHeading${index}" data-parent="#proformaFaqAccordion">
+            <div class="card-body">${faq.answer}</div>
+          </div>
+        </div>`
+        )
+        .join("");
+    }
+
+    generateProformaFAQ();
+  </script>
 
   <!-- JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -170,7 +170,7 @@
                     Generator</a>
                   <a href="freeItemListGenerator.html" class="dropdown-item">Free Item List Generator</a>
                   <a href="freeDeliveyChallanGenerator.html" class="dropdown-item">Free Delivery Challan Generator</a>
-                  <a href="freeReciptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
+                  <a href="freeReceiptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
                 </div>
               </div>
               <a href="contact.html" class="nav-item nav-link ">Contact</a>
@@ -592,8 +592,8 @@
 
   <!-- faq  -->
   <div class="container py-5">
-    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-    <div id="faqAccordion" role="tablist" aria-multiselectable="true"></div>
+    <h2 class="text-center mb-4">Free Purchase Order Generator - FAQs</h2>
+    <div id="purchaseOrderFaqAccordion" role="tablist" aria-multiselectable="true"></div>
   </div>
   <!-- faq end -->
   <!-- Call to Action -->
@@ -1067,7 +1067,55 @@
     });
   </script>
 
+  <script>
+    const purchaseOrderFaqs = [
+      {
+        question: "What is a purchase order?",
+        answer: `A purchase order (PO) is an official document issued by a buyer to a seller, confirming the purchase of goods or services. It includes details like items, quantity, price, and delivery terms.`
+      },
+      {
+        question: "Is the Purchase Order Generator really free?",
+        answer: `Yes! Our Free Purchase Order Generator is 100% free to use. You can create, download, and print professional purchase orders without any cost or account registration.`
+      },
+      {
+        question: "Do I need to sign up to use this tool?",
+        answer: `No sign-up is required. You can start creating purchase orders instantly, without any registration or login.`
+      },
+      {
+        question: "Can I customize the purchase order?",
+        answer: `Yes, you can fully customize the PO by adding your company details, supplier info, order items, GST, and other terms. The format is designed for flexibility and ease of use.`
+      },
+      {
+        question: "Is the generated purchase order legally valid?",
+        answer: `Yes. While a purchase order is not a legally binding agreement like a contract, it is widely accepted in business as a valid commitment to buy under the listed terms.`
+      }
+    ];
 
+    function generatePurchaseOrderFAQ() {
+      const faqContainer = document.getElementById("purchaseOrderFaqAccordion");
+      faqContainer.innerHTML = purchaseOrderFaqs
+        .map(
+          (faq, index) => `
+        <div class="card">
+          <div class="card-header faq-header collapsed" role="tab" id="purchaseOrderHeading${index}" 
+              data-toggle="collapse" href="#purchaseOrderCollapse${index}" aria-expanded="false" 
+              aria-controls="purchaseOrderCollapse${index}">
+            <h6 class="mb-0 d-flex justify-content-between align-items-center text-secondary">
+              ${faq.question}
+              <i class="fas fa-chevron-down"></i>
+            </h6>
+          </div>
+          <div id="purchaseOrderCollapse${index}" class="collapse ${index === 0 ? "show" : ""}" 
+              role="tabpanel" aria-labelledby="purchaseOrderHeading${index}" data-parent="#purchaseOrderFaqAccordion">
+            <div class="card-body">${faq.answer}</div>
+          </div>
+        </div>`
+        )
+        .join("");
+    }
+
+    generatePurchaseOrderFAQ();
+  </script>
 
 
   <!-- JavaScript Libraries -->

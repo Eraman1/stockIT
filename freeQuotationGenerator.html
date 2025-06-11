@@ -169,7 +169,7 @@
                   <a href="freePurchaseOrderGenerator.html" class="dropdown-item">Free Purchase Order Generator</a>
                   <a href="freeItemListGenerator.html" class="dropdown-item">Free Item List Generator</a>
                   <a href="freeDeliveyChallanGenerator.html" class="dropdown-item">Free Delivery Challan Generator</a>
-                  <a href="freeReciptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
+                  <a href="freeReceiptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
                 </div>
               </div>
               <a href="contact.html" class="nav-item nav-link ">Contact</a>
@@ -591,8 +591,8 @@
 
   <!-- faq  -->
   <div class="container py-5">
-    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-    <div id="faqAccordion" role="tablist" aria-multiselectable="true"></div>
+    <h2 class="text-center mb-4">Free Quotation Generator - FAQs</h2>
+    <div id="quotationFaqAccordion" role="tablist" aria-multiselectable="true"></div>
   </div>
   <!-- faq end -->
   <!-- Call to Action -->
@@ -1064,7 +1064,55 @@
   </script>
 
 
+  <script>
+    const quotationFaqs = [
+      {
+        question: "What is a quotation?",
+        answer: `A quotation is a formal document provided by a seller to a buyer offering products or services at a specified price under certain conditions. It helps customers estimate costs before making a purchase decision.`
+      },
+      {
+        question: "Is the Quotation Generator free to use?",
+        answer: `Yes! Our Free Quotation Generator is 100% free with no hidden charges. You can create, download, and print quotes without any registration.`
+      },
+      {
+        question: "Do I need to sign up or log in?",
+        answer: `No. You can start generating quotations immediately without creating an account or logging in.`
+      },
+      {
+        question: "Can I include tax and discounts in the quotation?",
+        answer: `Yes. The tool allows you to add taxes (such as GST), discounts, and other charges to create accurate and professional quotations.`
+      },
+      {
+        question: "Is the generated quotation legally binding?",
+        answer: `A quotation is not legally binding, but it is an important document for communicating price and scope. It serves as a formal offer and can be converted into an invoice or purchase order.`
+      }
+    ];
 
+    function generateQuotationFAQ() {
+      const faqContainer = document.getElementById("quotationFaqAccordion");
+      faqContainer.innerHTML = quotationFaqs
+        .map(
+          (faq, index) => `
+        <div class="card">
+          <div class="card-header faq-header collapsed" role="tab" id="quotationHeading${index}" 
+              data-toggle="collapse" href="#quotationCollapse${index}" aria-expanded="false" 
+              aria-controls="quotationCollapse${index}">
+            <h6 class="mb-0 d-flex justify-content-between align-items-center text-secondary">
+              ${faq.question}
+              <i class="fas fa-chevron-down"></i>
+            </h6>
+          </div>
+          <div id="quotationCollapse${index}" class="collapse ${index === 0 ? "show" : ""}" 
+              role="tabpanel" aria-labelledby="quotationHeading${index}" data-parent="#quotationFaqAccordion">
+            <div class="card-body">${faq.answer}</div>
+          </div>
+        </div>`
+        )
+        .join("");
+    }
+
+    generateQuotationFAQ();
+  </script>
 
   <!-- JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

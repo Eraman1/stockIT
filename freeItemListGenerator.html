@@ -169,7 +169,7 @@
                   <a href="freePurchaseOrderGenerator.html" class="dropdown-item">Free Purchase Order Generator</a>
                   <a href="freeItemListGenerator.html" class="dropdown-item active">Free Item List Generator</a>
                   <a href="freeDeliveyChallanGenerator.html" class="dropdown-item">Free Delivery Challan Generator</a>
-                  <a href="freeReciptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
+                  <a href="freeReceiptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
                 </div>
               </div>
               <a href="contact.html" class="nav-item nav-link ">Contact</a>
@@ -589,8 +589,8 @@
 
   <!-- faq  -->
   <div class="container py-5">
-    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-    <div id="faqAccordion" role="tablist" aria-multiselectable="true"></div>
+    <h2 class="text-center mb-4">Free Item List Generator - FAQs</h2>
+    <div id="itemListFaqAccordion" role="tablist" aria-multiselectable="true"></div>
   </div>
   <!-- faq end -->
   <!-- Call to Action -->
@@ -1053,7 +1053,55 @@
     });
   </script>
 
+  <script>
+    const itemListFaqs = [
+      {
+        question: "What is an item list?",
+        answer: `An item list is a detailed record of products, materials, or components that a business maintains for sale, use, or tracking purposes. It typically includes names, codes, prices, and stock quantities.`
+      },
+      {
+        question: "Is the Item List Generator free?",
+        answer: `Yes! Our Free Item List Generator is 100% free to use. You can create and download item lists without any registration or subscription.`
+      },
+      {
+        question: "Do I need to sign up to use the generator?",
+        answer: `No, you do not need to create an account. You can use the tool instantly to generate your item lists.`
+      },
+      {
+        question: "Can I export the item list to Excel or PDF?",
+        answer: `Yes! The generated item list can be downloaded as a PDF or copied for use in Excel or other tools for further processing.`
+      },
+      {
+        question: "Is my item list data stored?",
+        answer: `No, we do not store any of your data. All information is processed locally in your browser to ensure privacy and security.`
+      }
+    ];
 
+    function generateItemListFAQ() {
+      const faqContainer = document.getElementById("itemListFaqAccordion");
+      faqContainer.innerHTML = itemListFaqs
+        .map(
+          (faq, index) => `
+        <div class="card">
+          <div class="card-header faq-header collapsed" role="tab" id="itemListHeading${index}" 
+              data-toggle="collapse" href="#itemListCollapse${index}" aria-expanded="false" 
+              aria-controls="itemListCollapse${index}">
+            <h6 class="mb-0 d-flex justify-content-between align-items-center text-secondary">
+              ${faq.question}
+              <i class="fas fa-chevron-down"></i>
+            </h6>
+          </div>
+          <div id="itemListCollapse${index}" class="collapse ${index === 0 ? "show" : ""}" 
+              role="tabpanel" aria-labelledby="itemListHeading${index}" data-parent="#itemListFaqAccordion">
+            <div class="card-body">${faq.answer}</div>
+          </div>
+        </div>`
+        )
+        .join("");
+    }
+
+    generateItemListFAQ();
+  </script>
 
 
   <!-- JavaScript Libraries -->

@@ -169,7 +169,7 @@
                   <a href="freePurchaseOrderGenerator.html" class="dropdown-item">Free Purchase Order Generator</a>
                   <a href="freeItemListGenerator.html" class="dropdown-item">Free Item List Generator</a>
                   <a href="freeDeliveyChallanGenerator.html" class="dropdown-item">Free Delivery Challan Generator</a>
-                  <a href="freeReciptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
+                  <a href="freeReceiptGenerator.html" class="dropdown-item">Free Receipt Generator</a>
                 </div>
               </div>
               <a href="contact.html" class="nav-item nav-link ">Contact</a>
@@ -591,8 +591,8 @@
 
   <!-- faq  -->
   <div class="container py-5">
-    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-    <div id="faqAccordion" role="tablist" aria-multiselectable="true"></div>
+    <h2 class="text-center mb-4">Free Invoice Generator - FAQs</h2>
+    <div id="invoiceFaqAccordion" role="tablist" aria-multiselectable="true"></div>
   </div>
   <!-- faq end -->
   <!-- Call to Action -->
@@ -1064,7 +1064,55 @@
   </script>
 
 
+  <script>
+    const invoiceFaqs = [
+      {
+        question: "What is an invoice?",
+        answer: `An invoice is a commercial document issued by a seller to a buyer, listing the products or services provided and stating the amount owed for payment.`
+      },
+      {
+        question: "Is this Invoice Generator free to use?",
+        answer: `Yes! Our Free Invoice Generator is completely free to use. You can create, download, and print invoices without any cost or subscription.`
+      },
+      {
+        question: "Do I need to sign up or register?",
+        answer: `No sign-up is required. You can instantly generate invoices without creating an account.`
+      },
+      {
+        question: "Can I customize the invoice?",
+        answer: `Absolutely! You can add your business name, logo, customer details, item descriptions, taxes, and much more. The invoice template is fully customizable.`
+      },
+      {
+        question: "Is the invoice generated GST-compliant?",
+        answer: `Yes, our invoice generator supports GST fields and format, allowing you to create professional, GST-compliant invoices for Indian businesses.`
+      }
+    ];
 
+    function generateInvoiceFAQ() {
+      const faqContainer = document.getElementById("invoiceFaqAccordion");
+      faqContainer.innerHTML = invoiceFaqs
+        .map(
+          (faq, index) => `
+        <div class="card">
+          <div class="card-header faq-header collapsed" role="tab" id="invoiceHeading${index}" 
+              data-toggle="collapse" href="#invoiceCollapse${index}" aria-expanded="false" 
+              aria-controls="invoiceCollapse${index}">
+            <h6 class="mb-0 d-flex justify-content-between align-items-center text-secondary">
+              ${faq.question}
+              <i class="fas fa-chevron-down"></i>
+            </h6>
+          </div>
+          <div id="invoiceCollapse${index}" class="collapse ${index === 0 ? "show" : ""}" 
+              role="tabpanel" aria-labelledby="invoiceHeading${index}" data-parent="#invoiceFaqAccordion">
+            <div class="card-body">${faq.answer}</div>
+          </div>
+        </div>`
+        )
+        .join("");
+    }
+
+    generateInvoiceFAQ();
+  </script>
 
   <!-- JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
