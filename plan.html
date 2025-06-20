@@ -402,6 +402,14 @@
             display: block;
         }
 
+        .offer-timer {
+            margin-top: 6px;
+            font-size: 12px;
+            color: #ff4d4f;
+            font-weight: bold;
+        }
+
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .header-container {
@@ -790,13 +798,17 @@
         <div class="bottom-content">
             <div class="total-section">
                 <div class="plan-info" id="planInfo">Select a plan to see pricing</div>
-                <div class="total-amount" id="totalAmount">Total: ₹0 <span class="gst-info">(incl. 18% GST)</span></div>
+                <div class="total-amount" id="totalAmount">
+                    Total: ₹0 <span class="gst-info">(incl. 18% GST)</span>
+                </div>
+                <div class="offer-timer" id="offerTimer">Offer expires in: <span id="timer">05:00</span></div>
             </div>
             <button class="buy-button" onclick="buyPlan()" id="buyButton" disabled>
                 Select a Plan
             </button>
         </div>
     </div>
+
 
     <script>
         // Plan data
@@ -1035,6 +1047,27 @@
             setTimeout(initializeDefaultSelection, 100);
         });
     </script>
+
+    <script>
+        let duration = 300; // 5 minutes in seconds
+        const timerDisplay = document.getElementById('timer');
+
+        const countdown = setInterval(() => {
+            let minutes = Math.floor(duration / 60);
+            let seconds = duration % 60;
+            timerDisplay.textContent =
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            if (duration <= 0) {
+                clearInterval(countdown);
+                timerDisplay.textContent = 'Expired';
+                document.getElementById('buyButton').disabled = true;
+            }
+
+            duration--;
+        }, 1000);
+    </script>
+
 </body>
 
 </html>
