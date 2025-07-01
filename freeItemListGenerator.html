@@ -462,7 +462,8 @@
 
         <div class="card p-2 mt-4 shadow-sm rounded">
           <h3 class="text-center mb-4">💬 <br> Suggestion Box</h3>
-          <form name="sentMessage" id="contactForm" novalidate="novalidate">
+          <div id="success"></div>
+          <form name="suggestionForm" id="suggestionForm">
 
             <div class="control-group mb-3">
               <input type="text" class="form-control form-control-sm p-2" id="name" placeholder="Your Name" required
@@ -516,7 +517,7 @@
             </div>
           </a>
         </div>
-  
+
         <!-- Card 2 -->
         <div class="col-md-4 mb-4">
           <a href="freeInvoiceGenerator.html" class="text-decoration-none text-dark">
@@ -526,7 +527,7 @@
             </div>
           </a>
         </div>
-  
+
         <!-- Card 3 -->
         <div class="col-md-4 mb-4">
           <a href="freeQuotationGenerator.html" class="text-decoration-none text-dark">
@@ -536,7 +537,7 @@
             </div>
           </a>
         </div>
-  
+
         <!-- Card 4 -->
         <div class="col-md-4  mb-4">
           <a href="freeItemListGenerator.html" class="text-decoration-none text-dark">
@@ -546,7 +547,7 @@
             </div>
           </a>
         </div>
-  
+
         <!-- Card 5 -->
         <div class="col-md-4  mb-4">
           <a href="freePurchaseOrderGenerator.html" class="text-decoration-none text-dark">
@@ -556,7 +557,7 @@
             </div>
           </a>
         </div>
-  
+
         <!-- Card 6 -->
         <div class="col-md-4 mb-4">
           <a href="freeDeliveyChallanGenerator.html" class="text-decoration-none text-dark">
@@ -566,7 +567,7 @@
             </div>
           </a>
         </div>
-  
+
         <!-- Card 7 -->
         <div class="col-md-4 mb-4">
           <a href="freeProformaInvoiceGenerator.html" class="text-decoration-none text-dark">
@@ -576,7 +577,7 @@
             </div>
           </a>
         </div>
-  
+
         <!-- Card 8 -->
         <div class="col-md-4 mb-4">
           <a href="freeReceiptGenerator.html" class="text-decoration-none text-dark">
@@ -676,9 +677,10 @@
         </p>
         <div class="w-100">
           <div class="input-group">
-            <input type="text" class="form-control border-0" style="padding: 25px" placeholder="Your Email" />
+            <input type="text" id="emailInput" class="form-control border-0" style="padding: 25px"
+              placeholder="Your Email" />
             <div class="input-group-append">
-              <button class="btn btn-primary px-4">Sign Up</button>
+              <button class="btn btn-primary px-4" id="signUpBtn">Sign Up</button>
             </div>
           </div>
         </div>
@@ -1124,6 +1126,7 @@
 
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
 </body>
 
 </html>

@@ -403,12 +403,24 @@
         }
 
         .offer-timer {
-            margin-top: 6px;
-            font-size: 12px;
-            color: #ff4d4f;
-            font-weight: bold;
+            color: #e53935;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-right: 8px;
+        }
+
+        .discounted-price {
+            color: #3aad05;
+            font-size: 20px;
+        }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
@@ -598,6 +610,26 @@
             <div id="monthly" class="tab-content active">
                 <div class="plans-scroll-container">
                     <div class="plans-container">
+
+                        <div class="plan-card" style="background-color: #dfe1e4 !important;"
+                            onclick="selectPlan(this, 'free-monthly')" data-plan="free-monthly" id="free-card">
+                            <div class="plan-name">Free</div>
+                            <div class="price-section">
+                                <!-- <div class="actual-price">₹0</div> -->
+                                <div class="offer-price" style="color: #565a60 !important;">₹0</div>
+                                <!-- <div class="price-period">per month</div> -->
+                            </div>
+                            <div class="plan-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">Devices:</span>
+                                    <span class="detail-value">Android</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Users:</span>
+                                    <span class="detail-value">1 User</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="plan-card" onclick="selectPlan(this, 'basic-monthly')" data-plan="basic-monthly"
                             id="basic-monthly-card">
                             <div class="plan-name">Basic Monthly</div>
@@ -799,9 +831,14 @@
             <div class="total-section">
                 <div class="plan-info" id="planInfo">Select a plan to see pricing</div>
                 <div class="total-amount" id="totalAmount">
-                    Total: ₹0 <span class="gst-info">(incl. 18% GST)</span>
+                    <span class="original-price">₹100</span>
+                    <span class="discounted-price">₹0</span>
+                    <span class="gst-info">(incl. 18% GST)</span>
                 </div>
-                <div class="offer-timer" id="offerTimer">Offer expires in: <span id="timer">05:00</span></div>
+                <div class="offer-timer" id="offerTimer">
+                    <span class="flash-icon">🔥</span> Offer ends in:
+                    <span id="timer">1d 00h 00m 00s</span>
+                </div>
             </div>
             <button class="buy-button" onclick="buyPlan()" id="buyButton" disabled>
                 Select a Plan
@@ -809,12 +846,21 @@
         </div>
     </div>
 
-
     <script>
         // Plan data
         const planData = {
+            'free-monthly': {
+                name: 'Free',
+                actualPrice: 0,
+                price: 0,
+                defaultUsers: 1,
+                allowsAdditionalUsers: false,
+                additionalUserCost: 0,
+                features: ['Android App Access', 'Basic Support', 'Limited Features', 'Data Backup', '24/7 Customer Support', 'Cloud Storage', 'Up to 100 Items manage', 'Daily upto 100 Transactions', 'Basic Inventory Access']
+            },
             'basic-monthly': {
                 name: 'Basic Monthly',
+                actualPrice: 100,
                 price: 60,
                 defaultUsers: 1,
                 allowsAdditionalUsers: false,
@@ -823,6 +869,7 @@
             },
             'pro-monthly': {
                 name: 'Pro Monthly',
+                actualPrice: 250,
                 price: 130,
                 defaultUsers: 4,
                 allowsAdditionalUsers: true,
@@ -831,6 +878,7 @@
             },
             'basic-plus-monthly': {
                 name: 'Basic Plus Monthly',
+                actualPrice: 160,
                 price: 140,
                 defaultUsers: 1,
                 allowsAdditionalUsers: false,
@@ -839,6 +887,7 @@
             },
             'pro-plus-monthly': {
                 name: 'Pro Plus Monthly',
+                actualPrice: 323,
                 price: 240,
                 defaultUsers: 4,
                 allowsAdditionalUsers: true,
@@ -847,6 +896,7 @@
             },
             'basic-yearly': {
                 name: 'Basic Yearly',
+                actualPrice: 830,
                 price: 620,
                 defaultUsers: 1,
                 allowsAdditionalUsers: false,
@@ -855,6 +905,7 @@
             },
             'pro-yearly': {
                 name: 'Pro Yearly',
+                actualPrice: 1670,
                 price: 1260,
                 defaultUsers: 4,
                 allowsAdditionalUsers: true,
@@ -863,6 +914,7 @@
             },
             'basic-plus-yearly': {
                 name: 'Basic Plus Yearly',
+                actualPrice: 1900,
                 price: 1400,
                 defaultUsers: 1,
                 allowsAdditionalUsers: false,
@@ -871,6 +923,7 @@
             },
             'pro-plus-yearly': {
                 name: 'Pro Plus Yearly',
+                actualPrice: 2900,
                 price: 2400,
                 defaultUsers: 4,
                 allowsAdditionalUsers: true,
@@ -970,6 +1023,8 @@
             const totalAmount = document.getElementById('totalAmount');
             const buyButton = document.getElementById('buyButton');
 
+
+
             if (selectedPlan) {
                 planInfo.textContent = `${selectedPlan.name} • ${currentUsers} User${currentUsers > 1 ? 's' : ''}`;
 
@@ -978,14 +1033,28 @@
                 const subtotal = selectedPlan.price + additionalCost;
                 const gst = subtotal * 0.18;
                 const total = Math.round(subtotal + gst);
+                const actualSubtotal = selectedPlan.actualPrice + additionalCost;
+                const actualGst = actualSubtotal * 0.18;
+                const actualTotal = Math.round(actualSubtotal + actualGst);
 
-                totalAmount.innerHTML = `Total: ₹${total} <span class="gst-info">(incl. 18% GST)</span>`;
+                totalAmount.innerHTML = ` <span class="original-price">₹${actualTotal}</span>
+                    <span class="discounted-price">₹${total}</span>
+                    <span class="gst-info">(incl. 18% GST)</span>`;
 
-                buyButton.disabled = false;
-                buyButton.textContent = 'Buy Selected Plan';
+                if (selectedPlan == planData['free-monthly']) {
+                    buyButton.disabled = true;
+                    buyButton.textContent = 'Select a Plan';
+                } else {
+                    buyButton.disabled = false;
+                    buyButton.textContent = 'Buy Selected Plan';
+                }
+
+
             } else {
                 planInfo.textContent = 'Select a plan to see pricing';
-                totalAmount.innerHTML = `Total: ₹0 <span class="gst-info">(incl. 18% GST)</span>`;
+                totalAmount.innerHTML = ` <span class="original-price">₹0</span>
+                    <span class="discounted-price">₹0</span>
+                    <span class="gst-info">(incl. 18% GST)</span>`;
                 buyButton.disabled = true;
                 buyButton.textContent = 'Select a Plan';
             }
@@ -1049,23 +1118,28 @@
     </script>
 
     <script>
-        let duration = 300; // 5 minutes in seconds
-        const timerDisplay = document.getElementById('timer');
+        // Timer: Countdown from 1 day
+        const timerElement = document.getElementById("timer");
+        let countdown = 24 * 60 * 60; // 24 hours in seconds
 
-        const countdown = setInterval(() => {
-            let minutes = Math.floor(duration / 60);
-            let seconds = duration % 60;
-            timerDisplay.textContent =
-                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        function updateTimer() {
+            let days = Math.floor(countdown / (60 * 60 * 24));
+            let hours = Math.floor((countdown % (60 * 60 * 24)) / 3600);
+            let minutes = Math.floor((countdown % 3600) / 60);
+            let seconds = countdown % 60;
 
-            if (duration <= 0) {
-                clearInterval(countdown);
-                timerDisplay.textContent = 'Expired';
-                document.getElementById('buyButton').disabled = true;
+            timerElement.textContent = `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+
+            if (countdown > 0) {
+                countdown--;
+            } else {
+                clearInterval(timerInterval);
+                document.getElementById("offerTimer").textContent = "Offer expired!";
             }
+        }
 
-            duration--;
-        }, 1000);
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer();
     </script>
 
 </body>
