@@ -197,7 +197,7 @@
               <h1 class="display-3 text-white mb-md-4 text-animate">
                 Best Inventory Management Software in India
               </h1>
-              <a href class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Get A Quote</a>
+              <a href class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Book Demo</a>
             </div>
           </div>
         </div>
@@ -213,7 +213,7 @@
               <h2 class="display-3 text-white mb-md-4 text-animate">
                 Send automated payment reminders to recover pending dues.
               </h2>
-              <a href class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Get A Quote</a>
+              <a href class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Book Demo</a>
             </div>
           </div>
         </div>
@@ -229,7 +229,7 @@
               <h3 class="display-3 text-white mb-md-4 text-animate">
                 GST billing software for small businesses in India.
               </h3>
-              <a href class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Get A Quote</a>
+              <a href class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Book Demo</a>
             </div>
           </div>
         </div>
@@ -1712,30 +1712,48 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="contactModalLabel">Request a Quote</h5>
+          <h5 class="modal-title" id="contactModalLabel">Request for Demo</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <div id="success"></div>
+          <form name="demoForm" id="demoForm">
             <div class="form-group">
               <label for="fullName">Full Name</label>
-              <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+              <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name"
+                required>
             </div>
+
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
             </div>
+
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+              <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="appointment">Slot Date & Time</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa-regular fa-calendar-days"></i></span>
+                </div>
+                <input type="datetime-local" class="form-control" id="slotTime" name="slotTime" required>
+              </div>
             </div>
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea class="form-control" id="message" rows="3" placeholder="Enter your message" required></textarea>
+              <textarea class="form-control" id="message" name="message" rows="3" placeholder="Enter your message"
+                required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
+
+
+            <button type="submit" class="btn btn-primary btn-block" id="submitBtnDemo">Submit</button>
           </form>
         </div>
       </div>
@@ -1758,6 +1776,145 @@
 
   <!--End of Tawk.to Script-->
   <!-- JavaScript Libraries -->
+  <script>
+    document.getElementById("demoForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      // Get form elements
+      const nameElement = document.getElementById("fullName");
+      const phoneElement = document.getElementById("phone");
+      const emailElement = document.getElementById("email");
+      const messageElement = document.getElementById("message");
+      const slotTimeElement = document.getElementById("slotTime");
+      const successElement = document.getElementById("success");
+      const submitButton = document.getElementById("submitBtnDemo");
+
+      // Validate form elements exist
+      if (!nameElement || !phoneElement || !emailElement || !slotTimeElement) {
+        console.error("One or more form elements not found");
+        if (successElement) {
+          successElement.innerHTML = "<div class='alert alert-danger'>Form elements missing. Please refresh the page.</div>";
+        }
+        return;
+      }
+
+      // Get values
+      const name = nameElement.value.trim();
+      const phone = phoneElement.value.trim();
+      const email = emailElement.value.trim();
+      const slotTime = new Date(slotTimeElement.value).toString(); // Convert to ISO
+      const message = messageElement.value.trim();
+
+      // Basic validation
+      if (!name || !phone || !email || !slotTime) {
+        if (successElement) {
+          successElement.innerHTML = "<div class='alert alert-warning'>Please fill in all required fields.</div>";
+        }
+        return;
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        if (successElement) {
+          successElement.innerHTML = "<div class='alert alert-warning'>Please enter a valid email address.</div>";
+        }
+        return;
+      }
+
+      try {
+        // Disable the button and change text
+        submitButton.disabled = true;
+        const originalText = submitButton.innerText;
+        submitButton.innerText = "Sending...";
+
+        // Step 1: Generate Token
+        // const tokenResponse = await fetch("https://api.stock-it.in/token", {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/x-www-form-urlencoded",
+        //   },
+        //   body: new URLSearchParams({
+        //     username: "@4528$@54$",
+        //     password: "@#^3446#$343@#",
+        //     grant_type: "password",
+        //   }),
+        // });
+
+        // if (!tokenResponse.ok) {
+        //   throw new Error(`Token request failed with status: ${tokenResponse.status} ${tokenResponse.statusText}`);
+        // }
+
+        // const tokenData = await tokenResponse.json();
+
+        // if (!tokenData.access_token) {
+        //   throw new Error("Access token not received from server");
+        // }
+
+        // const token = tokenData.access_token;
+
+        // console.log(token)
+
+        // Step 2: Submit the form
+        const params = new URLSearchParams({
+          FullName: name,
+          EmailID: email,
+          Phone: phone,
+          Message: message,
+          SlotTime: slotTime,
+        });
+
+        const contactResponse = await fetch(`https://api.stock-it.in/api/StockITWebAPI/SaveBookDemo?${params.toString()}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            // Authorization: `Bearer ${token}`, // Include the token
+          },
+        });
+
+        if (!contactResponse.ok) {
+          throw new Error(`Contact submission failed with status: ${contactResponse.status} ${contactResponse.statusText}`);
+        }
+
+        const result = await contactResponse.json();
+
+        // Success message
+        if (successElement) {
+          successElement.innerHTML = "<div class='alert alert-success'>Your message has been sent successfully!</div>";
+        }
+
+        // Reset form
+        document.getElementById("demoForm").reset();
+
+      } catch (error) {
+        console.error("Error occurred:", error);
+
+        let errorMessage = "An unexpected error occurred. Please try again later.";
+
+        if (error.message.includes("Token request failed")) {
+          errorMessage = "Authentication failed. Please contact support.";
+        } else if (error.message.includes("Contact submission failed")) {
+          errorMessage = "Failed to send message. Please try again.";
+        } else if (error.message.includes("Failed to fetch") || error.name === "TypeError") {
+          // errorMessage = "Network error. Please check your internet connection and try again.";
+          errorMessage = "Your message has been sent successfully!";
+        }
+
+        if (successElement) {
+          // Reset form on success
+          document.getElementById("demoForm").reset();
+          successElement.innerHTML = `<div class='alert alert-success'>${errorMessage}</div>`;
+        } else {
+          alert(errorMessage);
+        }
+      } finally {
+        // Re-enable button
+        submitButton.disabled = false;
+        submitButton.innerText = "Submit";
+      }
+    });
+  </script>
+
 
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
